@@ -13,14 +13,14 @@
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
   <meta name="theme-color" content="#2f4154">
-  <meta name="author" content="John Doe">
+  <meta name="author" content="xjc">
   <meta name="keywords" content="">
   
     <meta name="description" content="实现两台mysql服务器主从复制服务器配置 准备两台服务器.  修改主服务器 (master) my.cnf配置文件,设置服务器唯一ip  主服务器开放账号运行下面sql语句  修改从服务器(slave) 配置文件   开启主备机同步 查询master服务器状态.show master status;   在从服务器中链接主服务器  (注意服务器IP以及日志点位与主服务器对应) 查看slave服务">
 <meta property="og:type" content="article">
 <meta property="og:title" content="mysql主备复制与读写分离">
-<meta property="og:url" content="http://example.com/2018/10/21/mysql%E4%B8%BB%E5%A4%87%E8%B5%8B%E5%80%BC%E4%B8%8E%E8%AF%BB%E5%86%99%E5%88%86%E7%A6%BB/index.html">
-<meta property="og:site_name" content="Hexo">
+<meta property="og:url" content="https://blog.restart.vip/2018/10/21/mysql%E4%B8%BB%E5%A4%87%E8%B5%8B%E5%80%BC%E4%B8%8E%E8%AF%BB%E5%86%99%E5%88%86%E7%A6%BB/index.html">
+<meta property="og:site_name" content="Cong&#39;s Blog">
 <meta property="og:description" content="实现两台mysql服务器主从复制服务器配置 准备两台服务器.  修改主服务器 (master) my.cnf配置文件,设置服务器唯一ip  主服务器开放账号运行下面sql语句  修改从服务器(slave) 配置文件   开启主备机同步 查询master服务器状态.show master status;   在从服务器中链接主服务器  (注意服务器IP以及日志点位与主服务器对应) 查看slave服务">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://user-images.githubusercontent.com/34369858/47266584-3740a300-d56b-11e8-85d8-ddcec6084cc7.png">
@@ -34,14 +34,14 @@
 <meta property="og:image" content="https://user-images.githubusercontent.com/34369858/47267170-7d4d3500-d572-11e8-9488-750d050044a1.png">
 <meta property="article:published_time" content="2018-10-21T11:44:31.000Z">
 <meta property="article:modified_time" content="2018-10-21T12:46:04.756Z">
-<meta property="article:author" content="John Doe">
+<meta property="article:author" content="xjc">
 <meta property="article:tag" content="MySQL优化">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://user-images.githubusercontent.com/34369858/47266584-3740a300-d56b-11e8-85d8-ddcec6084cc7.png">
   
   
   
-  <title>mysql主备复制与读写分离 - Hexo</title>
+  <title>mysql主备复制与读写分离 - Cong&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -79,7 +79,7 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+    var CONFIG = {"hostname":"blog.restart.vip","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -362,13 +362,13 @@
   <div class="license-box my-3">
     <div class="license-title">
       <div>mysql主备复制与读写分离</div>
-      <div>http://example.com/2018/10/21/mysql主备赋值与读写分离/</div>
+      <div>https://blog.restart.vip/2018/10/21/mysql主备赋值与读写分离/</div>
     </div>
     <div class="license-meta">
       
         <div class="license-meta-item">
           <div>作者</div>
-          <div>John Doe</div>
+          <div>xjc</div>
         </div>
       
       
