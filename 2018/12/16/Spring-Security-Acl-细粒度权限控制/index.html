@@ -25,21 +25,13 @@
 <meta property="og:site_name" content="Cong&#39;s Blog">
 <meta property="og:description" content="简介: Spring ACL有助于在单个域对象上定义特定用户&#x2F;角色的权限 - 而不是在典型的每个操作级别上全面定义权限。因此，不同的用户&#x2F;角色对每个特定对象具有不同的权限。在这种情况下，Spring ACL能够完成任务    ACL databases (ACL数据库模型) ACL_CLASS ACL_SID ACL_IDENTITY ACL_ENRTY  ACL_CLASS">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://user-images.githubusercontent.com/34369858/50052901-be268c00-0166-11e9-87d5-0a134d14b75b.png">
-<meta property="og:image" content="https://user-images.githubusercontent.com/34369858/50052908-f332de80-0166-11e9-821b-063178f5ed2f.png">
-<meta property="og:image" content="https://user-images.githubusercontent.com/34369858/50052919-1cec0580-0167-11e9-93fb-e4a22592e623.png">
-<meta property="og:image" content="https://user-images.githubusercontent.com/34369858/50052933-4e64d100-0167-11e9-86ed-bd07a4fda96f.png">
-<meta property="og:image" content="https://user-images.githubusercontent.com/34369858/50052943-75bb9e00-0167-11e9-975b-b8d1d5c7fd38.png">
-<meta property="og:image" content="https://user-images.githubusercontent.com/34369858/50052980-0b572d80-0168-11e9-89b2-547a4670c2f0.png">
-<meta property="og:image" content="https://user-images.githubusercontent.com/34369858/50052989-304ba080-0168-11e9-97f5-6b715c5fd6c7.png">
-<meta property="og:image" content="https://user-images.githubusercontent.com/34369858/50052998-52452300-0168-11e9-8287-283215b29f8d.png">
-<meta property="og:image" content="https://user-images.githubusercontent.com/34369858/50053014-8e788380-0168-11e9-8e5e-2054eb0858fa.png">
+<meta property="og:image" content="https://rmt.ladydaily.com/fetch/fluid/storage/coding-imagehost/cover.png">
 <meta property="article:published_time" content="2018-12-16T10:57:16.000Z">
-<meta property="article:modified_time" content="2018-12-16T11:26:28.654Z">
+<meta property="article:modified_time" content="2023-01-10T14:51:20.602Z">
 <meta property="article:author" content="xjc">
 <meta property="article:tag" content="ACL访问控制列表">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://user-images.githubusercontent.com/34369858/50052901-be268c00-0166-11e9-87d5-0a134d14b75b.png">
+<meta name="twitter:image" content="https://rmt.ladydaily.com/fetch/fluid/storage/coding-imagehost/cover.png">
   
   
   
@@ -233,7 +225,7 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+     style="background: url('https://rmt.dogedoge.com/fetch/fluid/storage/bg/dojm2h.png') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
@@ -351,7 +343,7 @@
 <li>Message表中的假数据:<br><img src="https://user-images.githubusercontent.com/34369858/50052908-f332de80-0166-11e9-821b-063178f5ed2f.png" srcset="/img/loading.gif" lazyload alt="image">  </li>
 <li>首先运行测试方法查看效果:<br><img src="https://user-images.githubusercontent.com/34369858/50052919-1cec0580-0167-11e9-93fb-e4a22592e623.png" srcset="/img/loading.gif" lazyload alt="image"></li>
 <li>仅仅只查询出来两条数据.有点不信(因为acl默认帮我们实现了一系列操作).<br>注释掉注解,继续测试:<br><img src="https://user-images.githubusercontent.com/34369858/50052933-4e64d100-0167-11e9-86ed-bd07a4fda96f.png" srcset="/img/loading.gif" lazyload alt="image"></li>
-<li>看到,实际可以查出三条数据<br>  <img src="https://user-images.githubusercontent.com/34369858/50052943-75bb9e00-0167-11e9-975b-b8d1d5c7fd38.png" srcset="/img/loading.gif" lazyload alt="image"></li>
+<li>看到,实际可以查出三条数据<br><img src="https://user-images.githubusercontent.com/34369858/50052943-75bb9e00-0167-11e9-975b-b8d1d5c7fd38.png" srcset="/img/loading.gif" lazyload alt="image"></li>
 </ul>
 <ol start="3">
 <li>ACL实现分析:<br><strong>产生上面测试原因的主要原因:是在acl_enrty表中拥有一条记录</strong><br>ACL_ENTYR (简称权限条目表)<br><font color=#FF1493>(一个唯一的资源是否允许一个唯一的角色或者用户拥有何种操作<CURD>)</font><br><img src="https://user-images.githubusercontent.com/34369858/50052980-0b572d80-0168-11e9-89b2-547a4670c2f0.png" srcset="/img/loading.gif" lazyload alt="image"><br>这样一看有点懵.<br>首先看标记的两条的SID 属性,这里定义了一个角色OR用户.<br>观察acl_sid表. 角色用户定义表: 这里正好定义了一个manager用户<br><img src="https://user-images.githubusercontent.com/34369858/50052989-304ba080-0168-11e9-97f5-6b715c5fd6c7.png" srcset="/img/loading.gif" lazyload alt="image"><br>反看entry表中,<br>Identity 为1与3<br>Identity表数据<br><img src="https://user-images.githubusercontent.com/34369858/50052998-52452300-0168-11e9-8287-283215b29f8d.png" srcset="/img/loading.gif" lazyload alt="image"><br>这里可以得知:  object_id_identity 字段对应的是在message表中的主键字段,其实就是定义了唯一的资源<br>这样一个唯一资源(identity表中定义)的所有者(entry表中定义)的包含操作(entry表中定义)就有了.拥有这些属性就可以进行权限校验了<br>重新梳理一遍就不难知道acl是如何做到数据级别的权限控制了  </li>
