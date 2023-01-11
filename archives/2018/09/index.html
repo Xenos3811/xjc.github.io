@@ -60,7 +60,7 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"blog.restart.vip","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":"869b23d40d20ba6c4fda8344c394ed0c","google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":21529227,"cnzz":null,"leancloud":{"app_id":"gKtB30tLihTNa04qYcThi76Z-gzGzoHsz","app_key":"avBcj7X67Rr2jPyeUhEkgpak","server_url":"https://gktb30tl.lc-cn-n1-shared.com","path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+    var CONFIG = {"hostname":"blog.restart.vip","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":"869b23d40d20ba6c4fda8344c394ed0c","google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"gKtB30tLihTNa04qYcThi76Z-gzGzoHsz","app_key":"avBcj7X67Rr2jPyeUhEkgpak","server_url":"https://gktb30tl.lc-cn-n1-shared.com","path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -92,13 +92,6 @@
 
   
 
-  
-    <!-- 51.la Analytics -->
-    <script async>
-      if (!Fluid.ctx.dnt) {
-        Fluid.utils.createScript('//js.users.51.la/21529227.js');
-      }
-    </script>
   
 
   
@@ -261,31 +254,31 @@
       
       <p class="h5">2018</p>
     
-    <a href="/2018/09/27/SpringBoot%E6%95%B4%E5%90%88Mybatis/" class="list-group-item list-group-item-action">
+    <a href="/posts/52799/" class="list-group-item list-group-item-action">
       <time>09-27</time>
       <div class="list-group-item-title">SpringBoot整合Mybatis</div>
     </a>
   
     
-    <a href="/2018/09/26/Java%E4%B8%ADVolatile%E5%85%B3%E9%94%AE%E5%AD%97%E8%A7%A3%E6%9E%90/" class="list-group-item list-group-item-action">
+    <a href="/posts/1501/" class="list-group-item list-group-item-action">
       <time>09-26</time>
       <div class="list-group-item-title">Java中Volatile关键字解析</div>
     </a>
   
     
-    <a href="/2018/09/21/Java%E5%9F%BA%E7%A1%80%E4%B9%8B%E5%A4%9A%E6%80%81/" class="list-group-item list-group-item-action">
+    <a href="/posts/35718/" class="list-group-item list-group-item-action">
       <time>09-21</time>
       <div class="list-group-item-title">Java基础之多态</div>
     </a>
   
     
-    <a href="/2018/09/21/LinkedList%E5%8E%9F%E7%90%86%E5%8F%8A%E5%AE%9E%E7%8E%B0/" class="list-group-item list-group-item-action">
+    <a href="/posts/11961/" class="list-group-item list-group-item-action">
       <time>09-21</time>
       <div class="list-group-item-title">LinkedList原理及实现</div>
     </a>
   
     
-    <a href="/2018/09/20/ArrayList%E9%9B%86%E5%90%88%E5%8E%9F%E7%90%86/" class="list-group-item list-group-item-action">
+    <a href="/posts/24822/" class="list-group-item list-group-item-action">
       <time>09-20</time>
       <div class="list-group-item-title">ArrayList集合原理</div>
     </a>
@@ -340,7 +333,7 @@
     <div class="footer-inner">
   
     <div class="footer-content">
-       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+       <div> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/time.js"></script> </div> <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
     </div>
   
   
@@ -372,7 +365,7 @@
   
   
 </div>
-
+<p id="hitokoto">:D 获取中...</p>
   </footer>
 
   <!-- Scripts -->
