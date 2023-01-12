@@ -4,6 +4,56 @@
   
   
   <entry>
+    <title>MacOS软件工具插件分享</title>
+    <link href="/posts/39333/"/>
+    <url>/posts/39333/</url>
+    
+    <content type="html"><![CDATA[<p>分享一下我常用的软件、工具清单</p><p>每一个自认为都是🌟🌟🌟🌟🌟精品.</p><p>通过我的不断筛选及迭代最终保留下来的Mac必备软件</p><p>排名越靠前的越牛逼!</p><span id="more"></span><h3 id="软件及插件"><a href="#软件及插件" class="headerlink" title="软件及插件"></a>软件及插件</h3><p class="note note-info">开发软件 以下全是精品中的精品.推荐指数全部🌟🌟🌟🌟🌟</p><ul><li>jetbrains全家桶(推荐使用<a href="https://www.jetbrains.com/toolbox-app/">toolbox</a>安装)</li><li>前端开发 <a href="https://code.visualstudio.com/">vscode</a></li><li>数据库管理 <a href="https://dbeaver.io/">dbeaver</a></li><li>数据库设计 <a href="http://pdman.cn/">PDMAN</a></li><li>Redis管理工具 <a href="https://github.com/qishibo/AnotherRedisDesktopManager/releases">RedisDesktop</a></li><li>MongoDB管理<a href="https://www.mongodb.com/products/compass">MongoDB Compass Beta</a></li><li>API调试 <a href="https://www.postman.com/">PostMan</a></li><li>抓包工具 <a href="https://proxyman.io/">ProxyMan</a></li><li>Git分支管理 <a href="https://www.sourcetreeapp.com/">Sourcetree</a></li><li>Jvm内存分析 <a href="https://www.ej-technologies.com/products/jprofiler/overview.html">JProfiler</a></li><li>项目管理 <a href="https://www.omnigroup.com/omniplan/">OmniPlan</a></li><li>ssh工具 <a href="https://tabby.sh/">Tabby</a></li></ul><p class="note note-info">日常软件</p><ul><li><p><a href="https://folivora.ai/">BetterTouchTool</a> 手势自定义.</p><blockquote><p>用熟练了真的太牛逼了,触模板万能神器,啥都可以干!!一定要下载!!!</p></blockquote></li><li><p>微信读书</p><blockquote><p>为什么要推荐微信读书?因为它是在太牛逼了.<strong>跨平台</strong>同步<strong>阅读进度</strong>(不仅仅是同步书籍)、支持百分之99的书本格式、可自由导入书籍、还他妈的不要钱免费</p></blockquote></li><li><p><a href="https://www.snipaste.com/">Snipaste</a> 截图、贴图</p><blockquote><p>相比其他同类软件,这个没有广告,没有水印,功能也完全满足日常使用,我很喜欢</p></blockquote></li><li><p><a href="https://www.keka.io/en/">Keka</a> 解压缩</p><blockquote><p>听说有比他牛逼的,但是我懒得换了</p></blockquote></li><li><p><a href="https://getkap.co/">Kap</a> 屏幕录制</p><blockquote><p>很简约,我很喜欢</p></blockquote></li><li><p><a href="https://iina.io/">IINA</a> 视频播放</p><blockquote><p>没什么好说的,牛逼就完事儿了</p></blockquote></li><li><p><a href="https://freemacsoft.net/appcleaner/">AppCleaner</a>:卸载残留文件</p></li><li><p><a href="https://coteditor.com/">CotEditor</a> 文本编辑,NodePad++替代品</p></li><li><p><a href="https://typora.io/">Typora</a> MarkDown文字编辑</p><blockquote><p>很简约,我很喜欢.有破解版可以下载噢</p></blockquote></li><li><p><a href="https://github.com/ripperhe/Bob">Bob</a> 全局翻译</p><blockquote><p>试用体验下来我毫不犹豫的买了正版授权</p><p>Mac上的所有文本、图片翻译使用这一个就够了</p></blockquote></li><li><p><a href="https://www.macbartender.com/Bartender4/">Bartender 4</a> 状态栏管理</p><blockquote><p>软件太多了、mac的状态栏又不支持管理</p><p>被迫无奈买了授权(实在是找不到免费好用的相关软件)</p></blockquote></li><li><p><a href="https://xmind.cn/">Xmind</a> 脑图</p></li><li><p><a href="https://apps.ankiweb.net/">Anki</a> 一款单词记录本</p><blockquote><p>听人家讲很牛逼</p></blockquote></li><li><p>无边记 </p><blockquote><p>随时随地想到什么就记录下来</p><p>苹果自带软件.icloud同步可太方便了</p></blockquote></li><li><p><a href="https://github.com/Dreamacro/clash/releases">Clash</a> 懂得都懂</p></li><li><p><a href="https://github.com/2ndalpha/gasmask">Gas Mask</a> 本地hosts管理</p></li></ul><p class="note note-info">Mac插件</p><ul><li><a href="https://github.com/exelban/stats">Stats</a>:状态栏性能监控</li><li><a href="https://www.mowglii.com/itsycal/">Itsycal</a>:状态栏日历插件</li></ul><p class="note note-info">Chrome插件</p><ul><li>Tampermonkey 油猴脚本管理</li><li>AdGuard 广告拦截器</li><li>Bitwarden 免费密码管理器</li><li>Elasticvue - ElasticSeach管理</li><li>ModHeader - 自定义添加http请求表头</li><li>Save Page WE 保存当前页面</li><li>标签分组扩展 标签页分组快照保存</li></ul><p class="note note-info">IDEA插件</p><ul><li><a href="https://plugins.jetbrains.com/plugin/7499-gittoolbox">GitToolBox</a></li><li><a href="https://plugins.jetbrains.com/plugin/7642-save-actions">save-actions</a></li><li><a href="https://plugins.jetbrains.com/plugin/10119-mybatisx">mybatisx</a></li><li><a href="https://plugins.jetbrains.com/plugin/253-jprofiler">jprofiler</a></li><li><a href="https://plugins.jetbrains.com/plugin/7179-maven-helper">maven-helper</a></li></ul><h3 id="工具包"><a href="#工具包" class="headerlink" title="工具包"></a>工具包</h3><ul><li><p><strong>brew</strong> MacOS包管理器 🌟🌟🌟🌟🌟</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">直接使用官网一键安装包</span><br><span class="hljs-meta prompt_">$ </span><span class="language-bash">/bin/bash -c <span class="hljs-string">&quot;<span class="hljs-subst">$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)</span>&quot;</span></span><br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">查询安装的包</span><br><span class="hljs-meta prompt_">$ </span><span class="language-bash">brew list</span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">卸载包</span><br><span class="hljs-meta prompt_">$ </span><span class="language-bash">brew uninstall **</span><br></code></pre></td></tr></table></figure></li><li><p><strong>Git</strong> 🌟🌟🌟🌟🌟</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">直接使用brew安装.brew真TM牛逼</span><br><span class="hljs-meta prompt_">$ </span><span class="language-bash">brew install git</span><br></code></pre></td></tr></table></figure></li><li><p><strong>Jdk8</strong> 🌟🌟🌟🌟🌟</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">直接使用brew安装.brew真TM牛逼</span><br><span class="hljs-meta prompt_">$ </span><span class="language-bash">brew install openjdk@8</span><br></code></pre></td></tr></table></figure></li><li><p><strong>yarn</strong> 🌟🌟🌟🌟🌟(实在牛逼,比npm不知道快乐多少倍)</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">$ </span><span class="language-bash">brew install yarn</span><br></code></pre></td></tr></table></figure></li><li><p><strong>nvm</strong> node版本管理工具(实在牛逼、可自由切换版本)🌟🌟🌟🌟🌟</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">$ </span><span class="language-bash">brew install nvm</span><br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">查询node所有版本</span><br><span class="hljs-meta prompt_">$ </span><span class="language-bash">nvm list</span><br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">安装18.0版本的node</span><br><span class="hljs-meta prompt_">$ </span><span class="language-bash">nvm install 18</span><br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">切换node版本</span><br><span class="hljs-meta prompt_">$ </span><span class="language-bash">nvm use v18.10.0</span><br></code></pre></td></tr></table></figure></li><li><p><strong>jenv</strong> jdk版本管理工具(实在牛逼) 🌟🌟🌟🌟🌟</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">安装jenv</span><br><span class="hljs-meta prompt_">$ </span><span class="language-bash">brew install jenv</span><br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">配置</span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">Bash</span><br><span class="hljs-meta prompt_">$ </span><span class="language-bash"><span class="hljs-built_in">echo</span> <span class="hljs-string">&#x27;export PATH=&quot;$HOME/.jenv/bin:$PATH&quot;&#x27;</span> &gt;&gt; ~/.bash_profile</span><br><span class="hljs-meta prompt_">$ </span><span class="language-bash"><span class="hljs-built_in">echo</span> <span class="hljs-string">&#x27;eval &quot;$(jenv init -)&quot;&#x27;</span> &gt;&gt; ~/.bash_profile</span><br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">Zsh</span><br><span class="hljs-meta prompt_">$ </span><span class="language-bash"><span class="hljs-built_in">echo</span> <span class="hljs-string">&#x27;export PATH=&quot;$HOME/.jenv/bin:$PATH&quot;&#x27;</span> &gt;&gt; ~/.zshrc</span><br><span class="hljs-meta prompt_">$ </span><span class="language-bash"><span class="hljs-built_in">echo</span> <span class="hljs-string">&#x27;eval &quot;$(jenv init -)&quot;&#x27;</span> &gt;&gt; ~/.zshrc</span><br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">添加jdk到jenv管理中  使用命令 jenv add  <span class="hljs-string">&#x27;jdk安装路径&#x27;</span></span><br><span class="hljs-meta prompt_">$ </span><span class="language-bash">jenv add /Library/Java/JavaVirtualMachines/jdk1.8.0_281.jdk/Contents/Home</span><br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">查询当前已添加jdk版本</span><br><span class="hljs-meta prompt_">$ </span><span class="language-bash">jenv versions</span><br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">修改jdk版本</span><br><span class="hljs-meta prompt_">$ </span><span class="language-bash">jenv <span class="hljs-built_in">local</span> 18</span><br>system<br>  1.8<br>  19<br><span class="hljs-meta prompt_">  </span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">切换jdk版本</span><br><span class="hljs-meta prompt_">$ </span><span class="language-bash">jenv <span class="hljs-built_in">local</span> 19</span><br></code></pre></td></tr></table></figure></li></ul><p><em>如果你觉得很牛逼的软件在上面没有看到??</em></p><p><em>拜托写在评论区让我也去瞧一瞧啊!!!</em></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>分享</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>实用工具</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>新服务器软件初始化</title>
+    <link href="/posts/48598/"/>
+    <url>/posts/48598/</url>
+    
+    <content type="html"><![CDATA[<p>刚买了一台服务器,需要重新安装一些软件,在此记录一下</p><span id="more"></span><p>重装系统:目前装的是CentOS7<br>更新yum update</p><ol><li><p>安装docker容器</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">使用一件安装docker容器:</span><br><span class="hljs-meta prompt_">$ </span><span class="language-bash">curl -fsSL https://get.docker.com | bash -s docker --mirror Aliyun</span><br><span class="hljs-meta prompt_">$ </span><span class="language-bash">sudo systemctl start docker.service <span class="hljs-comment"># 启动docker容器</span></span><br><span class="hljs-meta prompt_">$ </span><span class="language-bash">sudo systemctl start docker <span class="hljs-comment"># 关闭docker容器</span></span><br></code></pre></td></tr></table></figure></li><li><p>安装mysql</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">$ </span><span class="language-bash">docker pull mysql:latest  <span class="hljs-comment"># 拉取最新镜像</span></span><br><span class="hljs-meta prompt_">$ </span><span class="language-bash">docker run -itd --name mysql-test -p 3306:3306 -e MYSQL_ROOT_PASSWORD=<span class="hljs-string">&#x27;你的密码&#x27;</span> mysql</span><br></code></pre></td></tr></table></figure></li><li><p>安装redis</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">$ </span><span class="language-bash">docker pull redis:latest</span><br><span class="hljs-meta prompt_">$ </span><span class="language-bash">docker run -itd --name myRedis -p 6379:6379 redis --requirepass <span class="hljs-string">&#x27;你的密码&#x27;</span></span><br></code></pre></td></tr></table></figure></li></ol>]]></content>
+    
+    
+    <categories>
+      
+      <category>编程</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>软件</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>Angular中的路由</title>
     <link href="/posts/378/"/>
     <url>/posts/378/</url>
@@ -13,14 +63,14 @@
     
     <categories>
       
-      <category>Augular</category>
+      <category>编程</category>
       
     </categories>
     
     
     <tags>
       
-      <tag>Angular路由</tag>
+      <tag>Angular</tag>
       
     </tags>
     
@@ -38,14 +88,14 @@
     
     <categories>
       
-      <category>MQTT</category>
+      <category>编程</category>
       
     </categories>
     
     
     <tags>
       
-      <tag>emq</tag>
+      <tag>Java</tag>
       
     </tags>
     
@@ -63,14 +113,14 @@
     
     <categories>
       
-      <category>spring-boot</category>
+      <category>编程</category>
       
     </categories>
     
     
     <tags>
       
-      <tag>spring-aop处理自定义注解</tag>
+      <tag>Java</tag>
       
     </tags>
     
@@ -88,14 +138,14 @@
     
     <categories>
       
-      <category>spring-security</category>
+      <category>编程</category>
       
     </categories>
     
     
     <tags>
       
-      <tag>ACL访问控制列表</tag>
+      <tag>Java</tag>
       
     </tags>
     
@@ -113,14 +163,14 @@
     
     <categories>
       
-      <category>spring-security</category>
+      <category>编程</category>
       
     </categories>
     
     
     <tags>
       
-      <tag>oauth2-client</tag>
+      <tag>Java</tag>
       
     </tags>
     
@@ -138,14 +188,14 @@
     
     <categories>
       
-      <category>spring-security</category>
+      <category>编程</category>
       
     </categories>
     
     
     <tags>
       
-      <tag>socail</tag>
+      <tag>Java</tag>
       
     </tags>
     
@@ -163,14 +213,14 @@
     
     <categories>
       
-      <category>功能实现</category>
+      <category>编程</category>
       
     </categories>
     
     
     <tags>
       
-      <tag>文件上传</tag>
+      <tag>Java</tag>
       
     </tags>
     
@@ -188,14 +238,14 @@
     
     <categories>
       
-      <category>报错</category>
+      <category>编程</category>
       
     </categories>
     
     
     <tags>
       
-      <tag>springboot报错</tag>
+      <tag>Java</tag>
       
     </tags>
     
@@ -213,14 +263,14 @@
     
     <categories>
       
-      <category>网络编程</category>
+      <category>编程</category>
       
     </categories>
     
     
     <tags>
       
-      <tag>socket</tag>
+      <tag>Java</tag>
       
     </tags>
     
@@ -238,14 +288,14 @@
     
     <categories>
       
-      <category>mysql</category>
+      <category>编程</category>
       
     </categories>
     
     
     <tags>
       
-      <tag>MySQL优化</tag>
+      <tag>数据库</tag>
       
     </tags>
     
@@ -263,14 +313,14 @@
     
     <categories>
       
-      <category>java高级</category>
+      <category>编程</category>
       
     </categories>
     
     
     <tags>
       
-      <tag>MySQL调优</tag>
+      <tag>数据库</tag>
       
     </tags>
     
@@ -288,14 +338,14 @@
     
     <categories>
       
-      <category>web框架</category>
+      <category>编程</category>
       
     </categories>
     
     
     <tags>
       
-      <tag>springboot</tag>
+      <tag>Java</tag>
       
     </tags>
     
@@ -313,14 +363,14 @@
     
     <categories>
       
-      <category>并发编程</category>
+      <category>编程</category>
       
     </categories>
     
     
     <tags>
       
-      <tag>volatile</tag>
+      <tag>Java</tag>
       
     </tags>
     
@@ -338,14 +388,14 @@
     
     <categories>
       
-      <category>java基础</category>
+      <category>编程</category>
       
     </categories>
     
     
     <tags>
       
-      <tag>多态</tag>
+      <tag>Java</tag>
       
     </tags>
     
@@ -363,14 +413,14 @@
     
     <categories>
       
-      <category>数据结构</category>
+      <category>编程</category>
       
     </categories>
     
     
     <tags>
       
-      <tag>LinkedList</tag>
+      <tag>Java</tag>
       
     </tags>
     
@@ -388,14 +438,14 @@
     
     <categories>
       
-      <category>java基础</category>
+      <category>编程</category>
       
     </categories>
     
     
     <tags>
       
-      <tag>ArrayList</tag>
+      <tag>Java</tag>
       
     </tags>
     
