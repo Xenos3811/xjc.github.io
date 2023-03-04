@@ -18,18 +18,18 @@
   <meta name="author" content="xjc">
   <meta name="keywords" content="">
   
-    <meta name="description" content="刚买了一台服务器,需要重新安装一些软件,在此记录一下">
+    <meta name="description" content="数据库基础模板  123456789101112131415-- life_restart.resource definitionCREATE TABLE &#96;resource_book&#96; (  &#96;id&#96; bigint NOT NULL AUTO_INCREMENT COMMENT &amp;#x27;主键&amp;#x27;,  &#96;state&#96; bigint NOT NULL DEFAULT &amp;#x27;1&amp;#x">
 <meta property="og:type" content="article">
-<meta property="og:title" content="新服务器软件初始化">
-<meta property="og:url" content="https://blog.restart.vip/posts/48598/index.html">
+<meta property="og:title" content="一些模板">
+<meta property="og:url" content="https://blog.restart.vip/posts/18638/index.html">
 <meta property="og:site_name" content="Cong&#39;s Blog">
-<meta property="og:description" content="刚买了一台服务器,需要重新安装一些软件,在此记录一下">
+<meta property="og:description" content="数据库基础模板  123456789101112131415-- life_restart.resource definitionCREATE TABLE &#96;resource_book&#96; (  &#96;id&#96; bigint NOT NULL AUTO_INCREMENT COMMENT &amp;#x27;主键&amp;#x27;,  &#96;state&#96; bigint NOT NULL DEFAULT &amp;#x27;1&amp;#x">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://rmt.ladydaily.com/fetch/fluid/storage/coding-imagehost/cover.png">
-<meta property="article:published_time" content="2023-01-12T03:51:28.000Z">
-<meta property="article:modified_time" content="2023-01-12T03:51:28.000Z">
+<meta property="article:published_time" content="2023-01-14T05:21:47.000Z">
+<meta property="article:modified_time" content="2023-01-14T05:21:47.000Z">
 <meta property="article:author" content="xjc">
-<meta property="article:tag" content="软件">
+<meta property="article:tag" content="自用模板">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://rmt.ladydaily.com/fetch/fluid/storage/coding-imagehost/cover.png">
   
@@ -37,7 +37,7 @@
   
      <!-- 一言 --> <script src="https://v1.hitokoto.cn/?encode=js&select=%23hitokoto" defer></script> 
   
-  <title>新服务器软件初始化 - Cong&#39;s Blog</title>
+  <title>一些模板 - Cong&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -233,7 +233,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="新服务器软件初始化"></span>
+            <span id="subtitle" data-typed-text="一些模板"></span>
           
         </div>
 
@@ -244,8 +244,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-01-12 11:51" pubdate>
-          2023年1月12日 中午
+        <time datetime="2023-01-14 13:21" pubdate>
+          2023年1月14日 下午
         </time>
       </span>
     
@@ -256,7 +256,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          2.2k 字
+          803 字
         
       </span>
     
@@ -267,7 +267,7 @@
         
         
         
-          19 分钟
+          7 分钟
         
       </span>
     
@@ -313,36 +313,15 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">新服务器软件初始化</h1>
+            <h1 style="display: none">一些模板</h1>
             
             
               <div class="markdown-body">
                 
-                <p>刚买了一台服务器,需要重新安装一些软件,在此记录一下</p>
-<span id="more"></span>
+                <p class="note note-primary">数据库基础模板</p>
 
-<p>重装系统:目前装的是 CentOS7<br>更新 yum update</p>
-<ol>
-<li>安装 docker 容器</li>
-</ol>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">使用一件安装docker容器:</span><br><span class="hljs-meta prompt_">$ </span><span class="language-bash">curl -fsSL https://get.docker.com | bash -s docker --mirror Aliyun</span><br><span class="hljs-meta prompt_">$ </span><span class="language-bash">sudo systemctl start docker.service <span class="hljs-comment"># 启动docker容器</span></span><br><span class="hljs-meta prompt_">$ </span><span class="language-bash">sudo systemctl start docker <span class="hljs-comment"># 关闭docker容器</span></span><br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">配置阿里云代理镜像</span><br><span class="hljs-meta prompt_">$ </span><span class="language-bash">sudo <span class="hljs-built_in">mkdir</span> -p /etc/docker</span><br><span class="hljs-meta prompt_">$ </span><span class="language-bash">sudo <span class="hljs-built_in">tee</span> /etc/docker/daemon.json &lt;&lt;-<span class="hljs-string">&#x27;EOF&#x27;</span></span><br>&#123;<br>  &quot;registry-mirrors&quot;: [&quot;https://vq4eiwe3.mirror.aliyuncs.com&quot;]<br>&#125;<br>EOF<br><span class="hljs-meta prompt_">$ </span><span class="language-bash">sudo systemctl daemon-reload</span><br><span class="hljs-meta prompt_">$ </span><span class="language-bash">sudo systemctl restart docker</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-comment">-- life_restart.resource definition</span><br><br><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">TABLE</span> `resource_book` (<br>  `id` <span class="hljs-type">bigint</span> <span class="hljs-keyword">NOT</span> <span class="hljs-keyword">NULL</span> AUTO_INCREMENT COMMENT <span class="hljs-string">&#x27;主键&#x27;</span>,<br>  `state` <span class="hljs-type">bigint</span> <span class="hljs-keyword">NOT</span> <span class="hljs-keyword">NULL</span> <span class="hljs-keyword">DEFAULT</span> <span class="hljs-string">&#x27;1&#x27;</span> COMMENT <span class="hljs-string">&#x27;软删除&#x27;</span>,<br>  `created_at` datetime <span class="hljs-keyword">DEFAULT</span> <span class="hljs-keyword">NULL</span> COMMENT <span class="hljs-string">&#x27;创建时间&#x27;</span>,<br>  `created_id` <span class="hljs-type">bigint</span> <span class="hljs-keyword">NOT</span> <span class="hljs-keyword">NULL</span> COMMENT <span class="hljs-string">&#x27;创建人&#x27;</span>,<br>  `created_by` <span class="hljs-type">varchar</span>(<span class="hljs-number">32</span>) <span class="hljs-keyword">DEFAULT</span> <span class="hljs-string">&#x27;&#x27;</span> COMMENT <span class="hljs-string">&#x27;创建人&#x27;</span>,<br>  `updated_at` datetime <span class="hljs-keyword">DEFAULT</span> <span class="hljs-keyword">NULL</span> COMMENT <span class="hljs-string">&#x27;更新时间&#x27;</span>,<br>  `updated_id` <span class="hljs-type">bigint</span>  COMMENT <span class="hljs-string">&#x27;更新人&#x27;</span>,<br>  `updated_by` <span class="hljs-type">varchar</span>(<span class="hljs-number">32</span>) <span class="hljs-keyword">DEFAULT</span> <span class="hljs-string">&#x27;&#x27;</span> COMMENT <span class="hljs-string">&#x27;更新人&#x27;</span>,<br>  `del_time` <span class="hljs-type">bigint</span> <span class="hljs-keyword">NOT</span> <span class="hljs-keyword">NULL</span> <span class="hljs-keyword">DEFAULT</span> <span class="hljs-number">0</span> COMMENT <span class="hljs-string">&#x27;删除时间&#x27;</span>,<br>  `last_updated_at` datetime(<span class="hljs-number">6</span>) <span class="hljs-keyword">NOT</span> <span class="hljs-keyword">NULL</span> <span class="hljs-keyword">DEFAULT</span> <span class="hljs-built_in">CURRENT_TIMESTAMP</span>(<span class="hljs-number">6</span>) <span class="hljs-keyword">ON</span> <span class="hljs-keyword">UPDATE</span> <span class="hljs-built_in">CURRENT_TIMESTAMP</span>(<span class="hljs-number">6</span>) COMMENT <span class="hljs-string">&#x27;最后更新时间&#x27;</span>,<br>  <span class="hljs-keyword">PRIMARY</span> KEY (`id`)<br>) ENGINE<span class="hljs-operator">=</span>InnoDB <span class="hljs-keyword">DEFAULT</span> CHARSET<span class="hljs-operator">=</span>utf8mb4 <span class="hljs-keyword">COLLATE</span><span class="hljs-operator">=</span>utf8mb4_0900_ai_ci COMMENT<span class="hljs-operator">=</span><span class="hljs-string">&#x27;&#x27;</span>;<br></code></pre></td></tr></table></figure>
 
-<ol start="2">
-<li>安装 mysql</li>
-</ol>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">$ </span><span class="language-bash">docker pull mysql:latest  <span class="hljs-comment"># 拉取最新镜像</span></span><br><span class="hljs-meta prompt_">$ </span><span class="language-bash">docker run -itd --name mysql-test -p 3306:3306 -e MYSQL_ROOT_PASSWORD=<span class="hljs-string">&#x27;你的密码&#x27;</span> mysql</span><br></code></pre></td></tr></table></figure>
-
-<ol start="3">
-<li>安装 redis</li>
-</ol>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">$ </span><span class="language-bash">docker pull redis:latest</span><br><span class="hljs-meta prompt_">$ </span><span class="language-bash">docker run -itd --name myRedis -p 6379:6379 redis --requirepass <span class="hljs-string">&#x27;你的密码&#x27;</span></span><br></code></pre></td></tr></table></figure>
-
-<ol start="4">
-<li>安装 mongoDB</li>
-</ol>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">$ </span><span class="language-bash">docker pull mongo:latest</span><br><span class="hljs-meta prompt_">$ </span><span class="language-bash">docker images</span><br><span class="hljs-meta prompt_">$ </span><span class="language-bash">docker run -itd --name mongo -p 27017:27017 mongo --auth</span><br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_">$ </span><span class="language-bash">docker <span class="hljs-built_in">exec</span> -it mongo mongo admin</span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">创建一个名为 admin，密码为 123456 的用户。</span><br><span class="hljs-meta prompt_">&gt; </span><span class="language-bash"> db.createUser(&#123; user:<span class="hljs-string">&#x27;admin&#x27;</span>,<span class="hljs-built_in">pwd</span>:<span class="hljs-string">&#x27;123456&#x27;</span>,roles:[ &#123; role:<span class="hljs-string">&#x27;userAdminAnyDatabase&#x27;</span>, db: <span class="hljs-string">&#x27;admin&#x27;</span>&#125;,<span class="hljs-string">&quot;readWriteAnyDatabase&quot;</span>]&#125;);</span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">尝试使用上面创建的用户信息进行连接。</span><br><span class="hljs-meta prompt_">&gt; </span><span class="language-bash">db.auth(<span class="hljs-string">&#x27;admin&#x27;</span>, <span class="hljs-string">&#x27;123456&#x27;</span>)</span><br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">到目前为止还没有结束,发现用工具还是服务都连接不上mongo.会报权限错误.</span><br></code></pre></td></tr></table></figure>
-
-<figure class="highlight nsis"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><code class="hljs nsis"><span class="hljs-comment"># mongo中的权限</span><br><span class="hljs-number">1</span>. 数据库用户角色：read、readWrite<span class="hljs-comment">;</span><br><span class="hljs-number">2</span>. 数据库管理角色：dbAdmin、dbOwner、userAdmin；<br><span class="hljs-number">3</span>. 集群管理角色：clusterAdmin、clusterManager、clusterMonitor、hostManager；<br><span class="hljs-number">4</span>. 备份恢复角色：backup、restore；<br><span class="hljs-number">5</span>. 所有数据库角色：readAnyDatabase、readWriteAnyDatabase、userAdminAnyDatabase、dbAdminAnyDatabase<br><span class="hljs-number">6</span>. 超级用户角色：root<br>// 这里还有几个角色间接或直接提供了系统超级用户的访问（dbOwner 、userAdmin、userAdminAnyDatabase）<br><span class="hljs-number">7</span>. 内部角色：__<span class="hljs-params">system</span><br><br><span class="hljs-comment"># 具体功能权限</span><br>readWrite：允许用户读写指定数据库<br>dbAdmin：允许用户在指定数据库中执行管理函数，如索引创建、删除，查看统计或访问<span class="hljs-params">system</span>.profile<br>userAdmin：允许用户向<span class="hljs-params">system</span>.users集合写入，可以找指定数据库里创建、删除和管理用户<br>clusterAdmin：只在<span class="hljs-literal">admin</span>数据库中可用，赋予用户所有分片和复制集相关函数的管理权限。<br>readAnyDatabase：只在<span class="hljs-literal">admin</span>数据库中可用，赋予用户所有数据库的读权限<br>readWriteAnyDatabase：只在<span class="hljs-literal">admin</span>数据库中可用，赋予用户所有数据库的读写权限<br>userAdminAnyDatabase：只在<span class="hljs-literal">admin</span>数据库中可用，赋予用户所有数据库的userAdmin权限<br>dbAdminAnyDatabase：只在<span class="hljs-literal">admin</span>数据库中可用，赋予用户所有数据库的dbAdmin权限。<br>root：只在<span class="hljs-literal">admin</span>数据库中可用。超级账号，超级权限<br><br><span class="hljs-comment"># 创建单个数据库用户</span><br>use life<br>db.createUser(&#123;<span class="hljs-literal">user</span>: <span class="hljs-string">&quot;life&quot;</span>, pwd: <span class="hljs-string">&quot;123456&quot;</span>, roles: [&#123; role: <span class="hljs-string">&quot;readWrite&quot;</span>, db: <span class="hljs-string">&quot;life&quot;</span> &#125;]&#125;)<br><br><span class="hljs-comment"># **追加权限**</span><br>db.grantRolesToUser(<span class="hljs-string">&quot;admin&quot;</span>,[&#123; role: <span class="hljs-string">&quot;dbOwner&quot;</span>, db: <span class="hljs-string">&quot;life&quot;</span>&#125;])<br></code></pre></td></tr></table></figure>
 
                 
               </div>
@@ -358,16 +337,6 @@
 <span class="category-chains">
   
   
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E7%BC%96%E7%A8%8B/" class="category-chain-item">编程</a>
-  
-  
-
-      </span>
-    
-  
 </span>
 
     </div>
@@ -376,7 +345,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/%E8%BD%AF%E4%BB%B6/">#软件</a>
+        <a href="/tags/%E8%87%AA%E7%94%A8%E6%A8%A1%E6%9D%BF/">#自用模板</a>
       
     </div>
   
@@ -388,8 +357,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>新服务器软件初始化</div>
-      <div>https://blog.restart.vip/posts/48598/</div>
+      <div>一些模板</div>
+      <div>https://blog.restart.vip/posts/18638/</div>
     </div>
     <div class="license-meta">
       
@@ -401,7 +370,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2023年1月12日</div>
+          <div>2023年1月14日</div>
         </div>
       
       
@@ -428,29 +397,6 @@
 
 
 
-              
-                <div class="post-prevnext my-3">
-                  <article class="post-prev col-6">
-                    
-                    
-                      <a href="/posts/39333/" title="MacOS软件工具插件分享">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">MacOS软件工具插件分享</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
-                  </article>
-                  <article class="post-next col-6">
-                    
-                    
-                      <a href="/posts/378/" title="Angular中的路由">
-                        <span class="hidden-mobile">Angular中的路由</span>
-                        <span class="visible-mobile">下一篇</span>
-                        <i class="iconfont icon-arrowright"></i>
-                      </a>
-                    
-                  </article>
-                </div>
               
             </div>
 
