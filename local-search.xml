@@ -8,7 +8,7 @@
     <link href="/posts/31709/"/>
     <url>/posts/31709/</url>
     
-    <content type="html"><![CDATA[<p>造物主啊,为什么要如此设计性?<br>性本是为了繁衍后代,为什么要把性强加上一个快感呢?且这世间万物都无法与这快感相比拟<br>当你洋洋得意,自以为你造就了唯一的永动机,让这世界永不停息.可你不知道,这是你最大的败笔:<br>为性添加了没有必要的强烈快感.因为这快感是一切罪恶的源头.它导致你创造的宇宙最终走向灭亡.</p><p>为什么我无法接受这样刺激的快感?难道不应该感谢造物主赐予了我这一无所有贫苦一生的普通人唯一的幸福吗?</p><p>我释放了本该属于我的巨大的能量.仅换来了那一瞬间的快感.<br>它夺走了我的思想在我还未经验到那一瞬间的快感时<br>它改变了我的精神在我释放完能量的那一刻之后<br>它让我的记忆力衰退,模糊了我曾经存在过,经验过的任何事物.让我没了过往,没了经验,也没了将来<br>它让我的脑袋迟钝,限制了我的思维,改变了我将来说过的每一句话,做过每一个行为.<br>它让我的心灵慢慢堕落,样貌更加丑陋.</p><p>它仅仅带给我那一丝的快感,快感之后又是无尽的虚无!</p><p>经过了短暂的CD<br>当我的思想展现真我<br>当我的精神焕然一新<br>当我的身体日益强健<br>当我内心充满爱与和平</p><p>那可怕的欲望它又来了.它又来侵蚀我了.侵蚀我思想,精神,身体.让我沦为它的阶下囚</p><p>这永无止境的黑暗车轮,慢慢让我忘记了我本来的面貌,让我成为了我讨厌的人</p>]]></content>
+    <content type="html"><![CDATA[<p>造物主啊,为什么要如此设计性?</p><p>性本是为了繁衍后代,为什么要把性强加上一个快感呢?且这世间万物都无法与这快感相比拟<br>当你洋洋得意,自以为你造就了唯一的永动机,让这世界永不停息.可你不知道,这是你最大的败笔:<br>为性添加了没有必要的强烈快感.因为这快感是一切罪恶的源头.它导致你创造的宇宙最终走向灭亡.</p><p>为什么我无法接受这样刺激的快感?难道不应该感谢造物主赐予了我这一无所有贫苦一生的普通人唯一的幸福吗?</p><p>我释放了本该属于我的巨大的能量.仅换来了那一瞬间的快感.<br>它夺走了我的思想在我还未经验到那一瞬间的快感时<br>它改变了我的精神在我释放完能量的那一刻之后<br>它让我的记忆力衰退,模糊了我曾经存在过,经验过的任何事物.让我没了过往,没了经验,也没了将来<br>它让我的脑袋迟钝,限制了我的思维,改变了我将来说过的每一句话,做过每一个行为.<br>它让我的心灵慢慢堕落,样貌更加丑陋.</p><p>它仅仅带给我那一丝的快感,快感之后又是无尽的虚无!</p><p>经过了短暂的CD<br>当我的思想展现真我<br>当我的精神焕然一新<br>当我的身体日益强健<br>当我内心充满爱与和平</p><p>那可怕的欲望它又来了.它又来侵蚀我了.侵蚀我思想,精神,身体.让我沦为它的阶下囚</p><p>这永无止境的黑暗车轮,慢慢让我忘记了我本来的面貌,让我成为了我讨厌的人</p>]]></content>
     
     
     <categories>
@@ -33,7 +33,7 @@
     <link href="/posts/4145/"/>
     <url>/posts/4145/</url>
     
-    <content type="html"><![CDATA[<p>摘要</p><span id="more"></span><p>正文</p><p class="note note-primary">标签</p><span class="label label-primary">Label</span>  // 行内标签            <input type="checkbox" disabled checked="checked">text           //   勾选框<a class="btn" href="url" title="鼠标悬浮文字">text</a> //按钮]]></content>
+    <content type="html"><![CDATA[<h1 id="搭建teamspeak服务器"><a href="#搭建teamspeak服务器" class="headerlink" title="搭建teamspeak服务器"></a>搭建teamspeak服务器</h1><ol><li>创建一个teamspeak用户(开启teamspeak服务必须)<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs shell">yum update<br>useradd teamspeak <br>passwd teamspeak<br></code></pre></td></tr></table></figure></li><li>去官网<a href="https://www.teamspeak.com/en/downloads/#server">下载</a>最新的服务包并安装</li><li>切换用户并启动ts<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs shell">su teamspeak<br>cd teamspeak3/<br><span class="hljs-meta prompt_"># </span><span class="language-bash">启动</span><br>./ts3server_startscript.sh start license_accepted=1<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">关闭</span><br>./ts3server_startscript.sh stop<br></code></pre></td></tr></table></figure></li></ol><h1 id="使用域名链接服务器"><a href="#使用域名链接服务器" class="headerlink" title="使用域名链接服务器"></a>使用域名链接服务器</h1><ol><li>创建一个DNS-A解析,将域名解析到你的主机ip</li><li>创建一个SRV解析,并配置DNS-A解析.</li></ol><h4 id="DNS-A解析"><a href="#DNS-A解析" class="headerlink" title="DNS-A解析"></a>DNS-A解析</h4><ul><li><strong>Type</strong> – choose A.</li><li><strong>Name</strong> – specify the subdomain name.</li><li><strong>Points to</strong> – enter the IP of your TeamSpeak 3 server, removing the sample <strong>185.185.185.185</strong> address.</li><li><strong>TTL</strong> – this stands for <strong>time-to-live</strong>, which limits the lifetime of the record. Leave the default value.</li></ul><p><img src="http://img.restart.vip/uPic/202310VbQmGJ.jpg" alt="dns-a"></p><h4 id="SRV解析"><a href="#SRV解析" class="headerlink" title="SRV解析"></a>SRV解析</h4><ul><li><strong>Type</strong> – choose <strong>SRV</strong>.</li><li><strong>Name</strong> – 随意</li><li><strong>Server</strong> –  ts3(必须)</li><li><strong>Weight</strong> – for records with the same priority, set it to <strong>5</strong>.</li><li><strong>Port</strong> – enter your server’s port. Alternatively, the default TeamSpeak 3 server port is <strong>9987</strong>.</li><li><strong>Target</strong> – instead of <strong>teamspeak.yourdomain.com</strong>, enter the subdomain you created in <strong>Step 1</strong>.</li><li><strong>Priority</strong> – set the value to 0.</li><li><strong>TTL</strong> – leave the default value here.</li></ul><p><img src="http://img.restart.vip/uPic/202310Lt5yfH.png" alt="srv"></p><p>现在使用域名链接就ok辣</p><h2 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h2><p>记一个工具网站:<a href="https://vercel.com/">https://vercel.com/</a><br>可以直接将你的前端项目部署到上去,然后使用域名解析就可以访问了,都不需要服务器<br>我使用他部署了我的chat-gpt程序</p>]]></content>
     
     
     
@@ -42,7 +42,7 @@
   
   
   <entry>
-    <title>《被讨厌的勇气》</title>
+    <title>被讨厌的勇气</title>
     <link href="/posts/7909/"/>
     <url>/posts/7909/</url>
     
