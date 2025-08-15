@@ -28,13 +28,13 @@ https://blog.restart.vip/about/index.html
 https://blog.restart.vip/posts/39333/
 https://blog.restart.vip/posts/48598/
 https://blog.restart.vip/
-https://blog.restart.vip/tags/Java/
 https://blog.restart.vip/tags/%E5%89%8D%E7%AB%AF/
-https://blog.restart.vip/tags/%E5%B7%A5%E5%85%B7/
-https://blog.restart.vip/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/
+https://blog.restart.vip/tags/Java/
 https://blog.restart.vip/tags/Golang/
-https://blog.restart.vip/tags/books/
+https://blog.restart.vip/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/
+https://blog.restart.vip/tags/%E5%B7%A5%E5%85%B7/
 https://blog.restart.vip/tags/vue/
+https://blog.restart.vip/tags/books/
 https://blog.restart.vip/tags/book/
 https://blog.restart.vip/tags/%E8%BD%AF%E4%BB%B6/
 https://blog.restart.vip/categories/%E7%BC%96%E7%A8%8B/
