@@ -1,0 +1,850 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/avatar.png">
+  <link rel="icon" href="/img/avatar.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="xjc">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="Readding 是一个类似豆瓣图书的综合图书推荐平台 这是一个学习项目,是针对于golang与vue的相关技术知识的巩固">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Readding">
+<meta property="og:url" content="https://blog.restart.vip/posts/64618/index.html">
+<meta property="og:site_name" content="Cong&#39;s Blog">
+<meta property="og:description" content="Readding 是一个类似豆瓣图书的综合图书推荐平台 这是一个学习项目,是针对于golang与vue的相关技术知识的巩固">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://img.restart.vip/photo/2024/06/09N3TujB.jpg">
+<meta property="article:published_time" content="2024-06-14T16:55:21.000Z">
+<meta property="article:modified_time" content="2024-06-14T16:55:21.000Z">
+<meta property="article:author" content="xjc">
+<meta property="article:tag" content="project">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://img.restart.vip/photo/2024/06/09N3TujB.jpg">
+  
+  
+  
+     <!-- 一言 --> <script src="https://v1.hitokoto.cn/?encode=js&select=%23hitokoto" defer></script> 
+  
+  <title>Readding - Cong&#39;s Blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"blog.restart.vip","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"🛵","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":"869b23d40d20ba6c4fda8344c394ed0c","google":null,"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":"gKtB30tLihTNa04qYcThi76Z-gzGzoHsz","app_key":"avBcj7X67Rr2jPyeUhEkgpak","server_url":"https://gktb30tl.lc-cn-n1-shared.com","path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null},"gtag":null,"woyaola":null,"cnzz":null},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+  
+    <!-- Baidu Analytics -->
+    <script async>
+      if (!Fluid.ctx.dnt) {
+        var _hmt = _hmt || [];
+        (function() {
+          var hm = document.createElement("script");
+          hm.src = "https://hm.baidu.com/hm.js?869b23d40d20ba6c4fda8344c394ed0c";
+          var s = document.getElementsByTagName("script")[0];
+          s.parentNode.insertBefore(hm, s);
+        })();
+      }
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+    
+  
+
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Cong&#39;s Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('http://img.restart.vip/photo/2024/06/094h8mix.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Readding"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2024-06-15 00:55" pubdate>
+          2024年6月15日 凌晨
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          1.1k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          9 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="leancloud-page-views"></span> 次
+        </span>
+        
+      
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">Readding</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <p>Readding 是一个类似豆瓣图书的综合图书推荐平台</p>
+<p>这是一个学习项目,是针对于golang与vue的相关技术知识的巩固</p>
+<span id="more"></span>
+
+<h1 id="选型"><a href="#选型" class="headerlink" title="选型"></a>选型</h1><h2 id="后端"><a href="#后端" class="headerlink" title="后端"></a>后端</h2><ul>
+<li>Golang: 简单,快,代码优雅!</li>
+<li><a target="_blank" rel="noopener" href="https://docs.gofiber.io/">Fiber</a>: 一个web服务框架,相比于gin有更多的功能与插件</li>
+</ul>
+<h2 id="前端"><a href="#前端" class="headerlink" title="前端"></a>前端</h2><ul>
+<li>TypeScript</li>
+<li><a target="_blank" rel="noopener" href="https://cn.vuejs.org/guide/quick-start.html">Vue3</a> +</li>
+<li><a target="_blank" rel="noopener" href="https://element-plus.org/zh-CN/guide/quickstart.html">ElementPlus</a> +</li>
+<li><a target="_blank" rel="noopener" href="https://pinia.vuejs.org/zh/">Pinia</a></li>
+<li><a target="_blank" rel="noopener" href="https://vitejs.dev/">Vite</a></li>
+</ul>
+<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><p>在选型过程中发现的一些其他组件,并没有运用,只做记录</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://tailwindcss.com/">Tailwindcss</a>: 一个Css3框架</li>
+<li><a target="_blank" rel="noopener" href="https://quasar.dev/layout/gallery">Quasar</a>: 一个国外的UI组件框架.有桌面化UI库</li>
+<li><a target="_blank" rel="noopener" href="https://ui.nuxt.com/pro/components/auth-form">NuxtUi</a>: 一个国外的UI库,很漂亮,不过需要付费</li>
+<li>Arco: 字节的UI框架</li>
+<li>TDSIGN: 腾讯的UI框架</li>
+<li>Naive UI: 一个Vue3组件库</li>
+<li>PrimeVue: UI</li>
+<li><a target="_blank" rel="noopener" href="https://www.shadcn-vue.com/examples/dashboard.html">shadcn</a></li>
+</ul>
+<p>UI框架的选择实在太多了,国内的多而杂且没什么特色都差不太多,NaiveUI标榜最快但是个人开发.<br>对比起来Element算是成熟,开源的最早有经验沉淀.使用的人也最多</p>
+<h1 id="初始化项目"><a href="#初始化项目" class="headerlink" title="初始化项目"></a>初始化项目</h1><h2 id="初始目录"><a href="#初始目录" class="headerlink" title="初始目录"></a>初始目录</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">$ </span><span class="language-bash"><span class="hljs-built_in">mkdir</span> redding</span><br><span class="hljs-meta prompt_">$ </span><span class="language-bash"><span class="hljs-built_in">cd</span> redding</span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">服务</span><br><span class="hljs-meta prompt_">$ </span><span class="language-bash"><span class="hljs-built_in">mkdir</span> server</span><br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">前端</span><br><span class="hljs-meta prompt_">$ </span><span class="language-bash"><span class="hljs-built_in">mkdir</span> web</span><br></code></pre></td></tr></table></figure>
+
+<p><img src="http://img.restart.vip/photo/2024/06/15dErwLT.png-w200px" srcset="/img/loading.gif" lazyload alt="初始项目接结构"></p>
+<h2 id="Server"><a href="#Server" class="headerlink" title="Server"></a>Server</h2><ol>
+<li>创建一个main.go文件,和一个go.mod文件</li>
+<li>main.go文件指定包为package main ! package 一定要为main,才可以执行.</li>
+<li>go.mod 文件指定包为server. package server</li>
+<li>安装fiber框架,在server目录下 终端运行 <code>go get github.com/gofiber/fiber/v2</code></li>
+</ol>
+<h2 id="Web"><a href="#Web" class="headerlink" title="Web"></a>Web</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs shell">cd redding<br><span class="hljs-meta prompt_"># </span><span class="language-bash">vue</span><br>pnpm create vue@latest web<br>cd web<br>pnpm install<br><span class="hljs-meta prompt_"># </span><span class="language-bash">element</span><br>pnpm install element-plus<br></code></pre></td></tr></table></figure>
+
+<h2 id="启动项目"><a href="#启动项目" class="headerlink" title="启动项目"></a>启动项目</h2><p>启动项目前先在main.go创建一个web服务</p>
+<figure class="highlight golang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs golang"><span class="hljs-keyword">package</span> main<br><br><span class="hljs-keyword">import</span> <span class="hljs-string">&quot;github.com/gofiber/fiber/v2&quot;</span><br><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> &#123;<br>	app := fiber.New()<br><br>	app.Get(<span class="hljs-string">&quot;/&quot;</span>, <span class="hljs-function"><span class="hljs-keyword">func</span><span class="hljs-params">(c *fiber.Ctx)</span></span> <span class="hljs-type">error</span> &#123;<br>		<span class="hljs-keyword">return</span> c.SendString(<span class="hljs-string">&quot;Hello, World!&quot;</span>)<br>	&#125;)<br><br>	app.Listen(<span class="hljs-string">&quot;:3000&quot;</span>)<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>启动server与web,分开两个终端</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">在server/ 启动server</span><br>go run .<br><span class="hljs-meta prompt_"># </span><span class="language-bash">在web/ 启动vue</span><br>pnpm run dev<br></code></pre></td></tr></table></figure>
+
+<p><img src="http://img.restart.vip/photo/2024/06/159D5hqB.png" srcset="/img/loading.gif" lazyload><br><img src="http://img.restart.vip/photo/2024/06/15IoJcRj.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="简单尝试"><a href="#简单尝试" class="headerlink" title="简单尝试"></a>简单尝试</h2><p>简单尝试主要试一试vue,element,fiber的基础能力</p>
+<h3 id="web"><a href="#web" class="headerlink" title="web"></a>web</h3><p>vue 项目的程序主入口是index.html,它里面有一个id&#x3D;app的div,它引入了main.ts文件</p>
+<p>main.ts中创建了一个vue的单页面实例<br>为这个实例添加路由<br>app.user(router)<br>为这个实例添加状态管理<br>app.use(createPinia)<br>为这个实例添加elementUI组件<br>app.use(Element)<br>将vue实例挂载在上面的div标签中<br>app.mount(‘#app’)</p>
+<p class="note note-primary">简单测试</p>
+
+<ol>
+<li><p>新增视图</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs vue">&lt;!-- 在views下新建一个视图 HelloView.vue --&gt;<br>&lt;template&gt;<br>  &lt;div&gt;<br>    &lt;!-- 用一个element input --&gt;<br>    &lt;el-input v-model=&quot;data&quot; placeholder=&quot;请输入&quot; /&gt;<br>    &#123;&#123; data &#125;&#125;<br>  &lt;/div&gt;<br>&lt;/template&gt;<br><br>&lt;script setup lang=&quot;ts&quot;&gt;<br>  import &#123; ref &#125; from &#x27;vue&#x27;<br>  const data = ref(&#x27;&#x27;)<br>&lt;/script&gt;<br><br>&lt;style lang=&quot;scss&quot; scoped&gt;&lt;/style&gt;<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>路由映射</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs ts"><span class="hljs-comment">// 在router/index.ts 中添加hello路由映射节点</span><br><span class="hljs-attr">routes</span>: [<br>  &#123;<br>    <span class="hljs-attr">path</span>: <span class="hljs-string">&#x27;/&#x27;</span>,<br>    <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;home&#x27;</span>,<br>    <span class="hljs-attr">component</span>: <span class="hljs-title class_">HomeView</span><br>  &#125;,<br>  &#123;<br>    <span class="hljs-attr">path</span>: <span class="hljs-string">&#x27;/about&#x27;</span>,<br>    <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;about&#x27;</span>,<br>    <span class="hljs-attr">component</span>: <span class="hljs-function">() =&gt;</span> <span class="hljs-keyword">import</span>(<span class="hljs-string">&#x27;../views/AboutView.vue&#x27;</span>)<br>  &#125;,<br>  <span class="hljs-comment">// 新增的</span><br>  &#123;<br>    <span class="hljs-attr">path</span>: <span class="hljs-string">&#x27;/hello&#x27;</span>,<br>    <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;hello&#x27;</span>,<br>    <span class="hljs-attr">component</span>: <span class="hljs-title class_">HelloView</span><br>  &#125;<br>]<br></code></pre></td></tr></table></figure></li>
+<li><p>在App.vue中使用RouterLink编写一个路由标签</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs vue">&lt;!-- App.vue --&gt;<br>&lt;!-- 在原本的基础上加入一个hello的路由 --&gt;<br>&lt;template&gt;<br>&lt;div class=&quot;wrapper&quot;&gt;<br>	&lt;HelloWorld msg=&quot;You did it!&quot; /&gt;<br>	&lt;nav&gt;<br>	&lt;RouterLink to=&quot;/&quot;&gt;Home&lt;/RouterLink&gt;<br>		&lt;!-- 加入一个hello的路由 --&gt;<br>	&lt;RouterLink to=&quot;/hello&quot;&gt;Hello&lt;/RouterLink&gt;<br>	&lt;RouterLink to=&quot;/about&quot;&gt;About&lt;/RouterLink&gt;<br>	&lt;/nav&gt;<br>&lt;/div&gt;<br>&lt;/header&gt;<br>&lt;RouterView /&gt;<br>&lt;/template&gt;<br></code></pre></td></tr></table></figure></li>
+</ol>
+<p>点击Hello成功路由到了刚新添加的视图,在视图input中输入可以看到有响应式数据的同步展示</p>
+<p><img src="http://img.restart.vip/photo/2024/06/15uTszQZ.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="Server-1"><a href="#Server-1" class="headerlink" title="Server"></a>Server</h3><p>在上面我们创建了一个基于fiber的web服务,启动服务后,使用curl工具请求可以接口能成功响应<br><img src="http://img.restart.vip/photo/2024/06/150KqIBM.png" srcset="/img/loading.gif" lazyload></p>
+<p>现在,我们为这个web服务添加一个POST接口返回一个JSON格式的数据.<br>在开始之前,有一个问题,现在的server服务没有热加载的功能,即每次修改代码后需要重新启动,这样比较麻烦.</p>
+<p>我们先为之加上一个热加载的功能,使用<a target="_blank" rel="noopener" href="https://github.com/air-verse/air">air</a>工具</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">安装air</span><br>go install github.com/air-verse/air@latest<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">USE : 去server下,</span><br>cd server<br><span class="hljs-meta prompt_"># </span><span class="language-bash">生成air文件</span><br>air init<br><span class="hljs-meta prompt_"># </span><span class="language-bash">使用air指令启动服务</span><br>air<br></code></pre></td></tr></table></figure>
+
+<p>现在在main.go的main方法中添加一个POST接口</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs go">app.Post(<span class="hljs-string">&quot;/hello&quot;</span>, <span class="hljs-function"><span class="hljs-keyword">func</span><span class="hljs-params">(c *fiber.Ctx)</span></span> <span class="hljs-type">error</span> &#123;<br>	<span class="hljs-keyword">return</span> c.JSON(fiber.Map&#123;<br>		<span class="hljs-string">&quot;code&quot;</span>: <span class="hljs-number">200</span>,<br>		<span class="hljs-string">&quot;msg&quot;</span>:<span class="hljs-string">&quot;success&quot;</span>,<br>		<span class="hljs-string">&quot;data&quot;</span>:fiber.Map&#123;&#125;,<br>	&#125;)<br>&#125;)<br></code></pre></td></tr></table></figure>
+
+<p>保存后可以看到服务自动更新重启了.</p>
+<p><img src="http://img.restart.vip/photo/2024/06/15HFiPGr.png" srcset="/img/loading.gif" lazyload></p>
+<p>使用curl测试接口<br><code>curl -d &quot;1&quot; localhost:3000/hello</code></p>
+<p><img src="http://img.restart.vip/photo/2024/06/15o4xWJM.png" srcset="/img/loading.gif" lazyload></p>
+<hr>
+<p>余下的正文</p>
+<p>&#x2F;&#x2F; 标签 primary secondary success danger warning info</p>
+<div class="note note-success">
+            <p>文字 或者 <code>markdown</code> 均可</p>
+          </div> || <p class="note note-primary">标签</p>
+
+<p>&#x2F;&#x2F;行内标签<br><span class="label label-primary">Label</span> || <span class="label label-primary">text</span></p>
+<p>&#x2F;&#x2F; 折叠块</p>
+
+    <div class="fold">
+      <div class="fold-title fold-info collapsed" data-toggle="collapse" href="#collapse-b5714680" role="button" aria-expanded="false" aria-controls="collapse-b5714680">
+        <div class="fold-arrow">▶</div>title
+      </div>
+      <div class="fold-collapse collapse" id="collapse-b5714680">
+        <div class="fold-content">
+          <p>需要折叠的一段内容，支持 markdown</p>
+        </div>
+      </div>
+    </div>
+
+<p>&#x2F;&#x2F; 勾选框</p>
+
+            <input type="checkbox"  checked="checked">text
+
+          
+
+<p>&#x2F;&#x2F;按钮</p>
+<a class="btn" href="url"  title="title" target="_blank">text</a> || <a class="btn" href="url" title="鼠标悬浮文字">text</a>
+
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs"><br></code></pre></td></tr></table></figure>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/project/" class="print-no-link">#project</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>Readding</div>
+      <div>https://blog.restart.vip/posts/64618/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>xjc</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2024年6月15日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://lib.baomitu.com/valine/1.5.1/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"gKtB30tLihTNa04qYcThi76Z-gzGzoHsz","appKey":"avBcj7X67Rr2jPyeUhEkgpak","path":"window.location.pathname","placeholder":"留下你的足迹吧","avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":true,"recordIP":true,"serverURLs":"","emojiCDN":"//i0.hdslb.com/bfs/emote/","emojiMaps":{"tv_doge":"6ea59c827c414b4a2955fe79e0f6fd3dcd515e24.png","tv_亲亲":"a8111ad55953ef5e3be3327ef94eb4a39d535d06.png","tv_偷笑":"bb690d4107620f1c15cff29509db529a73aee261.png","tv_再见":"180129b8ea851044ce71caf55cc8ce44bd4a4fc8.png","tv_冷漠":"b9cbc755c2b3ee43be07ca13de84e5b699a3f101.png","tv_发怒":"34ba3cd204d5b05fec70ce08fa9fa0dd612409ff.png","tv_发财":"34db290afd2963723c6eb3c4560667db7253a21a.png","tv_可爱":"9e55fd9b500ac4b96613539f1ce2f9499e314ed9.png","tv_吐血":"09dd16a7aa59b77baa1155d47484409624470c77.png","tv_呆":"fe1179ebaa191569b0d31cecafe7a2cd1c951c9d.png","tv_呕吐":"9f996894a39e282ccf5e66856af49483f81870f3.png","tv_困":"241ee304e44c0af029adceb294399391e4737ef2.png","tv_坏笑":"1f0b87f731a671079842116e0991c91c2c88645a.png","tv_大佬":"093c1e2c490161aca397afc45573c877cdead616.png","tv_大哭":"23269aeb35f99daee28dda129676f6e9ea87934f.png","tv_委屈":"d04dba7b5465779e9755d2ab6f0a897b9b33bb77.png","tv_害羞":"a37683fb5642fa3ddfc7f4e5525fd13e42a2bdb1.png","tv_尴尬":"7cfa62dafc59798a3d3fb262d421eeeff166cfa4.png","tv_微笑":"70dc5c7b56f93eb61bddba11e28fb1d18fddcd4c.png","tv_思考":"90cf159733e558137ed20aa04d09964436f618a1.png","tv_惊吓":"0d15c7e2ee58e935adc6a7193ee042388adc22af.png"},"enableQQ":true},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          var imgSelector = '#valine .vcontent img:not(.vemoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <p id="hitokoto">:D 获取中...</p> <div> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> | <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a><i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <script src="/js/time.js"></script> </div> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="leancloud-site-pv-container" style="display: none">
+        总访问量 
+        <span id="leancloud-site-pv"></span>
+         次
+      </span>
+    
+    
+      <span id="leancloud-site-uv-container" style="display: none">
+        总访客数 
+        <span id="leancloud-site-uv"></span>
+         人
+      </span>
+    
+    
+
+  
+
+</div>
+
+  
+  
+    <!-- 备案信息 ICP for China -->
+    <div class="beian">
+  <span>
+    <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+      京ICP证123456号
+    </a>
+  </span>
+  
+    
+      <span>
+        <a
+          href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=32432235"
+          rel="nofollow noopener"
+          class="beian-police"
+          target="_blank"
+        >
+          
+            <span style="visibility: hidden; width: 0">|</span>
+            <img src="/img/police_beian.png" srcset="/img/loading.gif" lazyload alt="police-icon"/>
+          
+          <span>京公网安备32432235号</span>
+        </a>
+      </span>
+    
+  
+</div>
+
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script defer src="/js/leancloud.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+  
+<script src="//cdn.jsdelivr.net/gh/EmoryHuang/BlogBeautify@1.1/love.min.js"></script>
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>

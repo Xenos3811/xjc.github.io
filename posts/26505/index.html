@@ -1,0 +1,830 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/avatar.png">
+  <link rel="icon" href="/img/avatar.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="xjc">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="使用 webupload 实现文件分片上传Web UploaderWebUploader是由 Baidu WebFE(FEX)团队开发的一个简单的以 HTML5 为主，FLASH 为辅的现代文件上传组件。在现代的浏览器里面能充分发挥 HTML5 的优势，同时又不摒弃主流 IE 浏览器，沿用原来的 FLASH 运行时，兼容 IE6+，iOS 6+, android 4+。两套运行时，同样的调用方式，">
+<meta property="og:type" content="article">
+<meta property="og:title" content="webupload+springboot实现文件上传">
+<meta property="og:url" content="https://blog.restart.vip/posts/26505/index.html">
+<meta property="og:site_name" content="Cong&#39;s Blog">
+<meta property="og:description" content="使用 webupload 实现文件分片上传Web UploaderWebUploader是由 Baidu WebFE(FEX)团队开发的一个简单的以 HTML5 为主，FLASH 为辅的现代文件上传组件。在现代的浏览器里面能充分发挥 HTML5 的优势，同时又不摒弃主流 IE 浏览器，沿用原来的 FLASH 运行时，兼容 IE6+，iOS 6+, android 4+。两套运行时，同样的调用方式，">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://img.restart.vip/photo/2024/06/0967rRfI.jpg">
+<meta property="article:published_time" content="2018-11-21T00:55:27.000Z">
+<meta property="article:modified_time" content="2024-06-12T12:16:44.000Z">
+<meta property="article:author" content="xjc">
+<meta property="article:tag" content="Java">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://img.restart.vip/photo/2024/06/0967rRfI.jpg">
+  
+  
+  
+     <!-- 一言 --> <script src="https://v1.hitokoto.cn/?encode=js&select=%23hitokoto" defer></script> 
+  
+  <title>webupload+springboot实现文件上传 - Cong&#39;s Blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"blog.restart.vip","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"🛵","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":"869b23d40d20ba6c4fda8344c394ed0c","google":null,"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":"gKtB30tLihTNa04qYcThi76Z-gzGzoHsz","app_key":"avBcj7X67Rr2jPyeUhEkgpak","server_url":"https://gktb30tl.lc-cn-n1-shared.com","path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null},"gtag":null,"woyaola":null,"cnzz":null},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+  
+    <!-- Baidu Analytics -->
+    <script async>
+      if (!Fluid.ctx.dnt) {
+        var _hmt = _hmt || [];
+        (function() {
+          var hm = document.createElement("script");
+          hm.src = "https://hm.baidu.com/hm.js?869b23d40d20ba6c4fda8344c394ed0c";
+          var s = document.getElementsByTagName("script")[0];
+          s.parentNode.insertBefore(hm, s);
+        })();
+      }
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+    
+  
+
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Cong&#39;s Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('http://img.restart.vip/photo/2024/06/094h8mix.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="webupload+springboot实现文件上传"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2018-11-21 08:55" pubdate>
+          2018年11月21日 早上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          2.9k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          24 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="leancloud-page-views"></span> 次
+        </span>
+        
+      
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">webupload+springboot实现文件上传</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="使用-webupload-实现文件分片上传"><a href="#使用-webupload-实现文件分片上传" class="headerlink" title="使用 webupload 实现文件分片上传"></a>使用 webupload 实现文件分片上传</h1><h2 id="Web-Uploader"><a href="#Web-Uploader" class="headerlink" title="Web Uploader"></a>Web Uploader</h2><p><a target="_blank" rel="noopener" href="http://fex.baidu.com/webuploader/">WebUploader</a>是由 Baidu WebFE(FEX)团队开发的一个简单的以 HTML5 为主，FLASH 为辅的现代文件上传组件。在现代的浏览器里面能充分发挥 HTML5 的优势，同时又不摒弃主流 IE 浏览器，沿用原来的 FLASH 运行时，兼容 IE6+，iOS 6+, android 4+。两套运行时，同样的调用方式，可供用户任意选用。采用大文件分片并发上传，极大的提高了文件上传效率。</p>
+<ol>
+<li>创建 upload 项目并引入 jar 包及 webupload 组件</li>
+</ol>
+<ul>
+<li><p>主要 pom 依赖</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>commons-fileupload<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>commons-fileupload<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>1.3.3<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span><br>  <span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span><br><br><span class="hljs-comment">&lt;!--druid--&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>com.alibaba<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>druid<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>1.1.12<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span><br>  <span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span><br><br>  <span class="hljs-comment">&lt;!--MySQL Driver--&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>mysql<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>mysql-connector-java<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>5.1.38<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span><br>  <span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span><br><br>  <span class="hljs-comment">&lt;!--junit--&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>junit<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>junit<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>4.10<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span><br>  <span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span><br><br>  <span class="hljs-comment">&lt;!--spring data jpa--&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.springframework.data<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>spring-data-jpa<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>  <span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span><br><br></code></pre></td></tr></table></figure>
+</li>
+<li><p>引入 webupload 组件<br><img src="https://user-images.githubusercontent.com/34369858/48812575-edb3c580-ed6d-11e8-8182-fd1ef64fc631.png" srcset="/img/loading.gif" lazyload alt="image"></p>
+</li>
+</ul>
+<hr>
+<ol start="2">
+<li>创建实体对象<br><img src="https://user-images.githubusercontent.com/34369858/48812605-1d62cd80-ed6e-11e8-8ff7-f513dc365432.png" srcset="/img/loading.gif" lazyload alt="image"></li>
+</ol>
+<ul>
+<li><p>FileEntity</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">package</span> com.example.entity;<br><span class="hljs-keyword">import</span> lombok.Getter;<br><span class="hljs-keyword">import</span> lombok.Setter;<br><span class="hljs-keyword">import</span> javax.persistence.*;<br><span class="hljs-keyword">import</span> java.io.Serializable;<br><span class="hljs-keyword">import</span> java.util.Date;<br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@author</span>: xjc</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@date</span> 2018/11/20 15:12</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@description</span></span><br><span class="hljs-comment"> **/</span><br><span class="hljs-meta">@Getter</span><br><span class="hljs-meta">@Setter</span><br><span class="hljs-meta">@Entity</span><br><span class="hljs-meta">@Table(name=&quot;file&quot;)</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">FileEntity</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">Serializable</span> &#123;<br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> <span class="hljs-type">long</span> <span class="hljs-variable">serialVersionUID</span> <span class="hljs-operator">=</span> <span class="hljs-number">1L</span>;<br>    <span class="hljs-meta">@Id</span><br>    <span class="hljs-meta">@Column(name = &quot;id&quot;)</span><br>    <span class="hljs-keyword">private</span> String id;<br><br>    <span class="hljs-comment">//    文件类型  type</span><br>    <span class="hljs-meta">@Column(name=&quot;type&quot;)</span><br>    <span class="hljs-keyword">private</span> String type;<br><br>    <span class="hljs-comment">//    文件后缀  fix</span><br>    <span class="hljs-meta">@Column(name=&quot;fix&quot;)</span><br>    <span class="hljs-keyword">private</span> String fix;<br><br>    <span class="hljs-comment">//    文件名 name</span><br>    <span class="hljs-meta">@Column(name=&quot;name&quot;)</span><br>    <span class="hljs-keyword">private</span> String name;<br><br>    <span class="hljs-comment">//    创建者 creator</span><br>    <span class="hljs-meta">@Column(name=&quot;user_id&quot;)</span><br>    <span class="hljs-keyword">private</span> Long userId;<br><br>    <span class="hljs-comment">//    文件大小  size</span><br>    <span class="hljs-meta">@Column(name=&quot;size&quot;)</span><br>    <span class="hljs-keyword">private</span> Long size;<br><br>    <span class="hljs-comment">//    文件地址  path</span><br>    <span class="hljs-meta">@Column(name=&quot;path&quot;)</span><br>    <span class="hljs-keyword">private</span> String path;<br><br>    <span class="hljs-comment">//    备注信息  remark</span><br>    <span class="hljs-meta">@Column(name=&quot;remark&quot;)</span><br>    <span class="hljs-keyword">private</span> String remark;<br>    <span class="hljs-comment">//    其他  other</span><br>    <span class="hljs-meta">@Column(name=&quot;other&quot;)</span><br>    <span class="hljs-keyword">private</span> String other;<br><br>    <span class="hljs-keyword">private</span> Date created;<br><br> &#125;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>FileBlock</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Entity</span><br><span class="hljs-meta">@Getter</span><br><span class="hljs-meta">@Setter</span><br><span class="hljs-meta">@Table(name = &quot;fileBlock&quot;)</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">FileBlock</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">Serializable</span> &#123;<br><br>  <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> <span class="hljs-type">long</span> <span class="hljs-variable">serialVersionUID</span> <span class="hljs-operator">=</span> <span class="hljs-number">1L</span>;<br>  <span class="hljs-meta">@Id</span><br>  <span class="hljs-keyword">private</span> String id;<br>  <span class="hljs-comment">// 块下标</span><br>  <span class="hljs-keyword">private</span> String chunk;<br>  <span class="hljs-comment">// 块大小</span><br>  <span class="hljs-keyword">private</span> Long chunkSize;<br>  <span class="hljs-comment">// 块标识</span><br>  <span class="hljs-keyword">private</span> String md5;<br>  <span class="hljs-comment">// 块路径</span><br>  <span class="hljs-keyword">private</span> String path;<br>  <span class="hljs-comment">// 块名称</span><br>  <span class="hljs-keyword">private</span> String name;<br><br>  <span class="hljs-keyword">private</span> Date created;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<hr>
+<ol>
+<li>创建页面 html 代码</li>
+</ol>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-keyword">html</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;en&quot;</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">&quot;UTF-8&quot;</span> /&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>Title<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span><br>    <span class="hljs-comment">&lt;!--引入CSS--&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">&quot;stylesheet&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text/css&quot;</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;/css/webuploader.css&quot;</span> /&gt;</span><br>    <span class="hljs-comment">&lt;!--引入JS--&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text/javascript&quot;</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;/js/admin.js&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text/javascript&quot;</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;/js/jquery-1.8.3.min.js&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text/javascript&quot;</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;/js/webuploader.min.js&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br>    <span class="hljs-comment">&lt;!--SWF在初始化的时候指定，在后面将展示--&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span><span class="language-css"></span><br><span class="language-css">      <span class="hljs-selector-id">#ctlBtn</span> &#123;</span><br><span class="language-css">        <span class="hljs-attribute">top</span>: <span class="hljs-number">0px</span>;</span><br><span class="language-css">        <span class="hljs-attribute">left</span>: <span class="hljs-number">0px</span>;</span><br><span class="language-css">        <span class="hljs-attribute">width</span>: <span class="hljs-number">94px</span>;</span><br><span class="language-css">        <span class="hljs-attribute">height</span>: <span class="hljs-number">40.8px</span>;</span><br><span class="language-css">        <span class="hljs-attribute">overflow</span>: hidden;</span><br><span class="language-css">        <span class="hljs-attribute">bottom</span>: auto;</span><br><span class="language-css">        <span class="hljs-attribute">right</span>: auto;</span><br><span class="language-css">      &#125;</span><br><span class="language-css">    </span><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span><br>  <span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;uploader&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;wu-example&quot;</span>&gt;</span><br>      <span class="hljs-comment">&lt;!--用来存放文件信息--&gt;</span><br>      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;thelist&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;uploader-list&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br>      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;btns&quot;</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;picker&quot;</span>&gt;</span>选择文件<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;ctlBtn&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;btn btn-default&quot;</span>&gt;</span>开始上传<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span><br>      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br>  <span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript"></span><br><span class="language-javascript">    <span class="hljs-keyword">var</span> md5;</span><br><span class="language-javascript">    <span class="hljs-comment">//监听分块上传过程中的三个时间点</span></span><br><span class="language-javascript">    <span class="hljs-title class_">WebUploader</span>.<span class="hljs-property">Uploader</span>.<span class="hljs-title function_">register</span>(</span><br><span class="language-javascript">      &#123;</span><br><span class="language-javascript">        <span class="hljs-string">&#x27;before-send-file&#x27;</span>: <span class="hljs-string">&#x27;beforeSendFile&#x27;</span>,</span><br><span class="language-javascript">        <span class="hljs-string">&#x27;before-send&#x27;</span>: <span class="hljs-string">&#x27;beforeSend&#x27;</span>,</span><br><span class="language-javascript">        <span class="hljs-string">&#x27;after-send-file&#x27;</span>: <span class="hljs-string">&#x27;afterSendFile&#x27;</span>,</span><br><span class="language-javascript">      &#125;,</span><br><span class="language-javascript">      &#123;</span><br><span class="language-javascript">        <span class="hljs-comment">//时间点1：所有分块进行上传之前调用此函数</span></span><br><span class="language-javascript">        <span class="hljs-attr">beforeSendFile</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params">file</span>) &#123;</span><br><span class="language-javascript">          <span class="hljs-keyword">var</span> deferred = <span class="hljs-title class_">WebUploader</span>.<span class="hljs-title class_">Deferred</span>();</span><br><span class="language-javascript">          <span class="hljs-comment">//1、计算文件的唯一标记，用于断点续传</span></span><br><span class="language-javascript">          <span class="hljs-keyword">new</span> <span class="hljs-title class_">WebUploader</span>.<span class="hljs-title class_">Uploader</span>()</span><br><span class="language-javascript">            .<span class="hljs-title function_">md5File</span>(file, <span class="hljs-number">0</span>, <span class="hljs-number">10</span> * <span class="hljs-number">1024</span> * <span class="hljs-number">1024</span>)</span><br><span class="language-javascript">            .<span class="hljs-title function_">progress</span>(<span class="hljs-keyword">function</span> (<span class="hljs-params">percentage</span>) &#123;</span><br><span class="language-javascript">              $(<span class="hljs-string">&#x27;#&#x27;</span> + file.<span class="hljs-property">id</span>)</span><br><span class="language-javascript">                .<span class="hljs-title function_">find</span>(<span class="hljs-string">&#x27;p.state&#x27;</span>)</span><br><span class="language-javascript">                .<span class="hljs-title function_">text</span>(<span class="hljs-string">&#x27;正在读取文件信息...&#x27;</span>);</span><br><span class="language-javascript">            &#125;)</span><br><span class="language-javascript">            .<span class="hljs-title function_">then</span>(<span class="hljs-keyword">function</span> (<span class="hljs-params">val</span>) &#123;</span><br><span class="language-javascript">              md5 = val;</span><br><span class="language-javascript">              $(<span class="hljs-string">&#x27;#&#x27;</span> + file.<span class="hljs-property">id</span>)</span><br><span class="language-javascript">                .<span class="hljs-title function_">find</span>(<span class="hljs-string">&#x27;p.state&#x27;</span>)</span><br><span class="language-javascript">                .<span class="hljs-title function_">text</span>(<span class="hljs-string">&#x27;成功获取文件信息...&#x27;</span>);</span><br><span class="language-javascript">              <span class="hljs-comment">//获取文件信息后进入下一步</span></span><br><span class="language-javascript">              deferred.<span class="hljs-title function_">resolve</span>();</span><br><span class="language-javascript">            &#125;);</span><br><span class="language-javascript">          <span class="hljs-keyword">return</span> deferred.<span class="hljs-title function_">promise</span>();</span><br><span class="language-javascript">        &#125;,</span><br><span class="language-javascript">        <span class="hljs-comment">//时间点2：如果有分块上传，则每个分块上传之前调用此函数</span></span><br><span class="language-javascript">        <span class="hljs-attr">beforeSend</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params">block</span>) &#123;</span><br><span class="language-javascript">          <span class="hljs-keyword">var</span> deferred = <span class="hljs-title class_">WebUploader</span>.<span class="hljs-title class_">Deferred</span>();</span><br><span class="language-javascript">          $.<span class="hljs-title function_">ajax</span>(&#123;</span><br><span class="language-javascript">            <span class="hljs-attr">type</span>: <span class="hljs-string">&#x27;get&#x27;</span>,</span><br><span class="language-javascript">            <span class="hljs-attr">url</span>: <span class="hljs-variable constant_">BASE_PATH</span> + <span class="hljs-string">&#x27;/file/check&#x27;</span>,</span><br><span class="language-javascript">            <span class="hljs-attr">data</span>: &#123;</span><br><span class="language-javascript">              <span class="hljs-comment">//文件唯一标记</span></span><br><span class="language-javascript">              <span class="hljs-attr">md5</span>: md5,</span><br><span class="language-javascript">              <span class="hljs-comment">//当前分块下标</span></span><br><span class="language-javascript">              <span class="hljs-attr">chunk</span>: block.<span class="hljs-property">chunk</span>,</span><br><span class="language-javascript">              <span class="hljs-comment">//当前分块大小</span></span><br><span class="language-javascript">              <span class="hljs-attr">chunkSize</span>: block.<span class="hljs-property">end</span> - block.<span class="hljs-property">start</span>,</span><br><span class="language-javascript">            &#125;,</span><br><span class="language-javascript">            <span class="hljs-comment">//无缓存</span></span><br><span class="language-javascript">            <span class="hljs-attr">cache</span>: <span class="hljs-literal">false</span>,</span><br><span class="language-javascript">            <span class="hljs-comment">//无异步（必须加，否则异步上传会上传已经上传过的块）</span></span><br><span class="language-javascript">            <span class="hljs-attr">async</span>: <span class="hljs-literal">false</span>,</span><br><span class="language-javascript">            <span class="hljs-attr">dataType</span>: <span class="hljs-string">&#x27;json&#x27;</span>,</span><br><span class="language-javascript">            <span class="hljs-attr">success</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params">data</span>) &#123;</span><br><span class="language-javascript">              <span class="hljs-keyword">if</span> (data) &#123;</span><br><span class="language-javascript">                <span class="hljs-comment">//分块存在，跳过</span></span><br><span class="language-javascript">                deferred.<span class="hljs-title function_">reject</span>();</span><br><span class="language-javascript">              &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="language-javascript">                <span class="hljs-comment">//分块不存在或不完整，重新发送该分块内容</span></span><br><span class="language-javascript">                deferred.<span class="hljs-title function_">resolve</span>();</span><br><span class="language-javascript">              &#125;</span><br><span class="language-javascript">            &#125;,</span><br><span class="language-javascript">          &#125;);</span><br><span class="language-javascript"></span><br><span class="language-javascript">          <span class="hljs-variable language_">this</span>.<span class="hljs-property">owner</span>.<span class="hljs-property">options</span>.<span class="hljs-property">formData</span>.<span class="hljs-property">md5</span> = md5;</span><br><span class="language-javascript">          deferred.<span class="hljs-title function_">resolve</span>();</span><br><span class="language-javascript">          <span class="hljs-keyword">return</span> deferred.<span class="hljs-title function_">promise</span>();</span><br><span class="language-javascript">        &#125;,</span><br><span class="language-javascript">        <span class="hljs-comment">// 时间点3：所有分块上传成功后调用此函数</span></span><br><span class="language-javascript">        <span class="hljs-attr">afterSendFile</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) &#123;</span><br><span class="language-javascript">          <span class="hljs-comment">//如果分块上传成功，则通知后台合并分块</span></span><br><span class="language-javascript">          $.<span class="hljs-title function_">ajax</span>(&#123;</span><br><span class="language-javascript">            <span class="hljs-attr">type</span>: <span class="hljs-string">&#x27;POST&#x27;</span>,</span><br><span class="language-javascript">            <span class="hljs-attr">url</span>: <span class="hljs-variable constant_">BASE_PATH</span> + <span class="hljs-string">&#x27;/file/merge&#x27;</span>,</span><br><span class="language-javascript">            <span class="hljs-attr">data</span>: &#123;</span><br><span class="language-javascript">              <span class="hljs-attr">md5</span>: md5,</span><br><span class="language-javascript">            &#125;,</span><br><span class="language-javascript">            <span class="hljs-attr">success</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params">response</span>) &#123;</span><br><span class="language-javascript">              <span class="hljs-title function_">alert</span>(<span class="hljs-string">&#x27;上传成功&#x27;</span>);</span><br><span class="language-javascript">            &#125;,</span><br><span class="language-javascript">          &#125;);</span><br><span class="language-javascript">        &#125;,</span><br><span class="language-javascript">      &#125;</span><br><span class="language-javascript">    );</span><br><span class="language-javascript">    <span class="hljs-keyword">var</span> uploader = <span class="hljs-title class_">WebUploader</span>.<span class="hljs-title function_">create</span>(&#123;</span><br><span class="language-javascript">      <span class="hljs-comment">// swf文件路径</span></span><br><span class="language-javascript">      <span class="hljs-attr">swf</span>: <span class="hljs-variable constant_">BASE_PATH</span> + <span class="hljs-string">&#x27;/js/Uploader.swf&#x27;</span>,</span><br><span class="language-javascript">      <span class="hljs-comment">// 文件接收服务端。</span></span><br><span class="language-javascript">      <span class="hljs-attr">server</span>: <span class="hljs-variable constant_">BASE_PATH</span> + <span class="hljs-string">&#x27;/file/upload&#x27;</span>,</span><br><span class="language-javascript">      <span class="hljs-comment">// 选择文件的按钮。可选。</span></span><br><span class="language-javascript">      <span class="hljs-comment">// 内部根据当前运行是创建，可能是input元素，也可能是flash.</span></span><br><span class="language-javascript">      <span class="hljs-attr">pick</span>: <span class="hljs-string">&#x27;#picker&#x27;</span>,</span><br><span class="language-javascript">      <span class="hljs-comment">// 不压缩image, 默认如果是jpeg，文件上传前会压缩一把再上传！</span></span><br><span class="language-javascript">      <span class="hljs-attr">resize</span>: <span class="hljs-literal">false</span>,</span><br><span class="language-javascript">      <span class="hljs-comment">//开启分片上传</span></span><br><span class="language-javascript">      <span class="hljs-attr">chunked</span>: <span class="hljs-literal">true</span>,</span><br><span class="language-javascript">      <span class="hljs-comment">//分片大小</span></span><br><span class="language-javascript">      <span class="hljs-attr">chunkSize</span>: <span class="hljs-number">10</span> * <span class="hljs-number">1024</span> * <span class="hljs-number">1024</span>, <span class="hljs-comment">//*10</span></span><br><span class="language-javascript">      <span class="hljs-comment">//并发数</span></span><br><span class="language-javascript">      <span class="hljs-attr">threads</span>: <span class="hljs-number">3</span>,</span><br><span class="language-javascript">      <span class="hljs-comment">//请求参数表</span></span><br><span class="language-javascript">      <span class="hljs-comment">// formData:datalist,</span></span><br><span class="language-javascript">    &#125;);</span><br><span class="language-javascript"></span><br><span class="language-javascript">    $(<span class="hljs-string">&#x27;#ctlBtn&#x27;</span>).<span class="hljs-title function_">on</span>(<span class="hljs-string">&#x27;click&#x27;</span>, <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) &#123;</span><br><span class="language-javascript">      uploader.<span class="hljs-title function_">upload</span>();</span><br><span class="language-javascript">    &#125;);</span><br><span class="language-javascript"></span><br><span class="language-javascript">    <span class="hljs-comment">// 当有文件被添加进队列的时候</span></span><br><span class="language-javascript">    uploader.<span class="hljs-title function_">on</span>(<span class="hljs-string">&#x27;fileQueued&#x27;</span>, <span class="hljs-keyword">function</span> (<span class="hljs-params">file</span>) &#123;</span><br><span class="language-javascript">      $(<span class="hljs-string">&#x27;#thelist&#x27;</span>).<span class="hljs-title function_">append</span>(</span><br><span class="language-javascript">        <span class="hljs-string">&#x27;&lt;div id=&quot;&#x27;</span> +</span><br><span class="language-javascript">          file.<span class="hljs-property">id</span> +</span><br><span class="language-javascript">          <span class="hljs-string">&#x27;&quot; class=&quot;item&quot;&gt;&#x27;</span> +</span><br><span class="language-javascript">          <span class="hljs-string">&#x27;&lt;h4 class=&quot;info&quot;&gt;&#x27;</span> +</span><br><span class="language-javascript">          file.<span class="hljs-property">name</span> +</span><br><span class="language-javascript">          <span class="hljs-string">&#x27;&lt;/h4&gt;&#x27;</span> +</span><br><span class="language-javascript">          <span class="hljs-string">&#x27;&lt;p class=&quot;state&quot;&gt;等待上传...&lt;/p&gt;&#x27;</span> +</span><br><span class="language-javascript">          <span class="hljs-string">&#x27;&lt;/div&gt;&#x27;</span></span><br><span class="language-javascript">      );</span><br><span class="language-javascript">      <span class="hljs-comment">//暂停上传的文件</span></span><br><span class="language-javascript">      $(<span class="hljs-string">&#x27;#thelist&#x27;</span>).<span class="hljs-title function_">on</span>(<span class="hljs-string">&#x27;click&#x27;</span>, <span class="hljs-string">&#x27;.stop&#x27;</span>, <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) &#123;</span><br><span class="language-javascript">        uploader.<span class="hljs-title function_">stop</span>(<span class="hljs-literal">true</span>);</span><br><span class="language-javascript">      &#125;),</span><br><span class="language-javascript">        <span class="hljs-comment">//删除上传的文件</span></span><br><span class="language-javascript">        $(<span class="hljs-string">&#x27;#thelist&#x27;</span>).<span class="hljs-title function_">on</span>(<span class="hljs-string">&#x27;click&#x27;</span>, <span class="hljs-string">&#x27;.remove&#x27;</span>, <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) &#123;</span><br><span class="language-javascript">          <span class="hljs-keyword">if</span> ($(<span class="hljs-variable language_">this</span>).<span class="hljs-title function_">parents</span>(<span class="hljs-string">&#x27;.item&#x27;</span>).<span class="hljs-title function_">attr</span>(<span class="hljs-string">&#x27;id&#x27;</span>) === file.<span class="hljs-property">id</span>) &#123;</span><br><span class="language-javascript">            uploader.<span class="hljs-title function_">removeFile</span>(file);</span><br><span class="language-javascript">            $(<span class="hljs-variable language_">this</span>).<span class="hljs-title function_">parents</span>(<span class="hljs-string">&#x27;.item&#x27;</span>).<span class="hljs-title function_">remove</span>();</span><br><span class="language-javascript">          &#125;</span><br><span class="language-javascript">        &#125;);</span><br><span class="language-javascript">    &#125;);</span><br><span class="language-javascript"></span><br><span class="language-javascript">    <span class="hljs-comment">// 文件上传过程中创建进度条实时显示。</span></span><br><span class="language-javascript">    uploader.<span class="hljs-title function_">on</span>(<span class="hljs-string">&#x27;uploadProgress&#x27;</span>, <span class="hljs-keyword">function</span> (<span class="hljs-params">file, percentage</span>) &#123;</span><br><span class="language-javascript">      <span class="hljs-keyword">var</span> $li = $(<span class="hljs-string">&#x27;#&#x27;</span> + file.<span class="hljs-property">id</span>);</span><br><span class="language-javascript">      <span class="hljs-keyword">var</span> $percent = $li.<span class="hljs-title function_">find</span>(<span class="hljs-string">&#x27;.progress .progress-bar&#x27;</span>);</span><br><span class="language-javascript"></span><br><span class="language-javascript">      <span class="hljs-comment">// 避免重复创建</span></span><br><span class="language-javascript">      <span class="hljs-keyword">if</span> (!$percent.<span class="hljs-property">length</span>) &#123;</span><br><span class="language-javascript">        <span class="hljs-comment">// $percent = $(&#x27;&lt;div class=&quot;progress progress-striped active&quot;&gt;&#x27; +</span></span><br><span class="language-javascript">        <span class="hljs-comment">//     &#x27;&lt;div class=&quot;progress-bar&quot; role=&quot;progressbar&quot; style=&quot;width: 0%&quot;&gt;&#x27; +</span></span><br><span class="language-javascript">        <span class="hljs-comment">//     &#x27;&lt;/div&gt;&#x27; +</span></span><br><span class="language-javascript">        <span class="hljs-comment">//     &#x27;&lt;/div&gt;&#x27;).appendTo($li).find(&#x27;.progress-bar&#x27;);</span></span><br><span class="language-javascript">        $percent = $(</span><br><span class="language-javascript">          <span class="hljs-string">&#x27;&lt;div class=&quot;progress progress-striped active&quot;&gt;&#x27;</span> +</span><br><span class="language-javascript">            <span class="hljs-string">&#x27;&lt;div class=&quot;progress-bar&quot; role=&quot;progressbar&quot; style=&quot;width: 0%&quot;&gt;&#x27;</span> +</span><br><span class="language-javascript">            <span class="hljs-string">&#x27;&lt;/div&gt;&#x27;</span> +</span><br><span class="language-javascript">            <span class="hljs-string">&#x27;&lt;/div&gt;&#x27;</span></span><br><span class="language-javascript">        )</span><br><span class="language-javascript">          .<span class="hljs-title function_">appendTo</span>($li)</span><br><span class="language-javascript">          .<span class="hljs-title function_">find</span>(<span class="hljs-string">&#x27;.progress&#x27;</span>);</span><br><span class="language-javascript">      &#125;</span><br><span class="language-javascript">      $li.<span class="hljs-title function_">find</span>(<span class="hljs-string">&#x27;p.state&#x27;</span>).<span class="hljs-title function_">text</span>(<span class="hljs-string">&#x27;上传中&#x27;</span>);</span><br><span class="language-javascript">      $percent.<span class="hljs-title function_">css</span>(&#123;</span><br><span class="language-javascript">        <span class="hljs-attr">width</span>: percentage * <span class="hljs-number">100</span> + <span class="hljs-string">&#x27;%&#x27;</span>,</span><br><span class="language-javascript">        <span class="hljs-attr">height</span>: <span class="hljs-number">10</span>,</span><br><span class="language-javascript">        <span class="hljs-string">&#x27;background-color&#x27;</span>: <span class="hljs-string">&#x27;blue&#x27;</span>,</span><br><span class="language-javascript">      &#125;);</span><br><span class="language-javascript">    &#125;);</span><br><span class="language-javascript"></span><br><span class="language-javascript">    uploader.<span class="hljs-title function_">on</span>(<span class="hljs-string">&#x27;uploadSuccess&#x27;</span>, <span class="hljs-keyword">function</span> (<span class="hljs-params">file</span>) &#123;</span><br><span class="language-javascript">      $(<span class="hljs-string">&#x27;#&#x27;</span> + file.<span class="hljs-property">id</span>)</span><br><span class="language-javascript">        .<span class="hljs-title function_">find</span>(<span class="hljs-string">&#x27;p.state&#x27;</span>)</span><br><span class="language-javascript">        .<span class="hljs-title function_">text</span>(<span class="hljs-string">&#x27;已上传&#x27;</span>);</span><br><span class="language-javascript">    &#125;);</span><br><span class="language-javascript"></span><br><span class="language-javascript">    uploader.<span class="hljs-title function_">on</span>(<span class="hljs-string">&#x27;uploadError&#x27;</span>, <span class="hljs-keyword">function</span> (<span class="hljs-params">file</span>) &#123;</span><br><span class="language-javascript">      $(<span class="hljs-string">&#x27;#&#x27;</span> + file.<span class="hljs-property">id</span>)</span><br><span class="language-javascript">        .<span class="hljs-title function_">find</span>(<span class="hljs-string">&#x27;p.state&#x27;</span>)</span><br><span class="language-javascript">        .<span class="hljs-title function_">text</span>(<span class="hljs-string">&#x27;上传出错&#x27;</span>);</span><br><span class="language-javascript">    &#125;);</span><br><span class="language-javascript"></span><br><span class="language-javascript">    uploader.<span class="hljs-title function_">on</span>(<span class="hljs-string">&#x27;uploadComplete&#x27;</span>, <span class="hljs-keyword">function</span> (<span class="hljs-params">file</span>) &#123;</span><br><span class="language-javascript">      $(<span class="hljs-string">&#x27;#&#x27;</span> + file.<span class="hljs-property">id</span>)</span><br><span class="language-javascript">        .<span class="hljs-title function_">find</span>(<span class="hljs-string">&#x27;.progress&#x27;</span>)</span><br><span class="language-javascript">        .<span class="hljs-title function_">fadeOut</span>();</span><br><span class="language-javascript">    &#125;);</span><br><span class="language-javascript">  </span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<p>页面展示:<br> <img src="https://user-images.githubusercontent.com/34369858/48812932-8e56b500-ed6f-11e8-96a9-71cd7ec0a1d7.png" srcset="/img/loading.gif" lazyload alt="image"><br><strong>选择文件并上传,webupload 会将文件分成片段通过多线程向服务器发送请求</strong><br> <img src="https://user-images.githubusercontent.com/34369858/48813019-ef7e8880-ed6f-11e8-9b6a-c7642dd0a17b.png" srcset="/img/loading.gif" lazyload alt="image"><br>主要分为三个请求:<strong>upload</strong>(上传片段),<strong>check</strong>(检验片段是否存在),<strong>merge</strong>(全部上传成功后合并片段)</p>
+<hr>
+<ol start="4">
+<li>在服务器端完成文件分片上传操作</li>
+</ol>
+<ul>
+<li><p>创建 FileEntityController 接受页面请求</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@author</span>: xjc</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@date</span> 2018/11/20 15:49</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@description</span></span><br><span class="hljs-comment"> **/</span><br><span class="hljs-meta">@RestController</span><br><span class="hljs-meta">@RequestMapping(&quot;/file/&quot;)</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">FileEntityController</span> &#123;<br><br>    <span class="hljs-meta">@Autowired</span><br>    <span class="hljs-keyword">protected</span> FileEntityService service;<br><br>    <span class="hljs-meta">@Autowired</span><br>    <span class="hljs-keyword">protected</span> FileBlockService fileBlockService;<br><br>    <span class="hljs-meta">@Value(&quot;$&#123;tempPath&#125;&quot;)</span><br>    <span class="hljs-keyword">protected</span> String tempPath;<br><br>    <span class="hljs-meta">@Value(&quot;$&#123;basePath&#125;&quot;)</span><br>    <span class="hljs-keyword">protected</span> String basePath;<br><br>    <span class="hljs-meta">@GetMapping( &quot;/get/&#123;md5&#125;&quot;)</span><br>    <span class="hljs-keyword">public</span> Response <span class="hljs-title function_">file</span><span class="hljs-params">(<span class="hljs-meta">@PathVariable</span> String md5)</span>&#123;<br><br>        <span class="hljs-type">Response</span> <span class="hljs-variable">result</span> <span class="hljs-operator">=</span> service.findById(md5);<br><br>        <span class="hljs-keyword">return</span> result;<br>    &#125;<br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@author</span>:xjc</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@date</span>:2018/11/20</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@description</span>:文件分片上传</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@params</span>:文件,整个文件的md5,片号,文件名,分片总数</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-meta">@PostMapping(&quot;upload&quot;)</span><br>    <span class="hljs-keyword">public</span> Response <span class="hljs-title function_">upload</span><span class="hljs-params">(<span class="hljs-meta">@RequestParam(value = &quot;file&quot;)</span> MultipartFile file,</span><br><span class="hljs-params">                           <span class="hljs-meta">@RequestParam(value = &quot;md5&quot;)</span> String md5,</span><br><span class="hljs-params">                           <span class="hljs-meta">@RequestParam(value = &quot;chunk&quot;, defaultValue = &quot;0&quot;, required = false)</span> String chunk,</span><br><span class="hljs-params">                           <span class="hljs-meta">@RequestParam(value = &quot;name&quot;)</span> String name,</span><br><span class="hljs-params">                           <span class="hljs-meta">@RequestParam(value = &quot;chunks&quot;, defaultValue = &quot;0&quot;, required = false)</span> String chunks,</span><br><span class="hljs-params">                           <span class="hljs-meta">@RequestParam(value = &quot;type&quot;)</span> String type</span><br><span class="hljs-params">                           )</span>&#123;<br>        <span class="hljs-type">String</span> <span class="hljs-variable">uploadPath</span> <span class="hljs-operator">=</span> tempPath + <span class="hljs-string">&quot;\\###&quot;</span> + chunk + <span class="hljs-string">&quot;###&quot;</span> + name;<br><span class="hljs-comment">//        判断大文件是否存在</span><br>        <span class="hljs-keyword">if</span>(service.findById(md5).getStatus()!=<span class="hljs-number">200</span>)&#123;<br><span class="hljs-comment">//            由于webUpload多线程上传,所以要加锁</span><br>            <span class="hljs-keyword">synchronized</span> (FileEntityService.class) &#123;<br>                <span class="hljs-keyword">if</span> (service.findById(md5).getStatus() != <span class="hljs-number">200</span>) &#123;<br>                    <span class="hljs-comment">//          保存FileEntity到数据库中</span><br>                    <span class="hljs-type">FileEntity</span> <span class="hljs-variable">fileEntity</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">FileEntity</span>();<br>                    fileEntity.setId(md5);<br>                    fileEntity.setCreated(<span class="hljs-keyword">new</span> <span class="hljs-title class_">Date</span>());<br>                    fileEntity.setType(type);<br>                    fileEntity.setFix(name.substring(name.lastIndexOf(<span class="hljs-string">&quot;.&quot;</span>) + <span class="hljs-number">1</span>));<br>                    fileEntity.setName(name);<br>                    fileEntity.setSize(file.getSize());<br>                    <span class="hljs-comment">//            fileEntity.setPath();</span><br><br>                    <span class="hljs-comment">//            fileEntity.setUserId();</span><br>                    <span class="hljs-comment">//          保存文件到数据库中</span><br>                    service.save(fileEntity);<br>                &#125;<br>            &#125;<br>        &#125;<br><br>        <span class="hljs-comment">/*</span><br><span class="hljs-comment">        * webUpload请求判断重复</span><br><span class="hljs-comment">        * */</span><br><br><span class="hljs-comment">//        判断文件片段是否存在</span><br><span class="hljs-comment">//        FileBlock fileBlock = fileBlockService.findByMd5AndChunk(md5, chunk);</span><br><span class="hljs-comment">//        if(fileBlock!=null)&#123;</span><br><span class="hljs-comment">////            判断文件大小是否一样</span><br><span class="hljs-comment">//</span><br><span class="hljs-comment">//</span><br><span class="hljs-comment">////            由于数据库记录存上了,.所以不需要判断是否完成上传,直接返回上传成功</span><br><span class="hljs-comment">//</span><br><span class="hljs-comment">//</span><br><span class="hljs-comment">//        &#125;</span><br><span class="hljs-comment">//        if(fileBlock!=null)</span><br><span class="hljs-comment">//            return Response.ok();</span><br><br>        <span class="hljs-comment">//            开始上传文件片段</span><br>        service.upload(file, chunk, name, uploadPath);<br><br>        <span class="hljs-comment">//            上传成功保存到数据库中</span><br><br>        <span class="hljs-type">FileBlock</span> <span class="hljs-variable">fileBlock</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">FileBlock</span>();<br><br>        fileBlock.setId(Sid.next());<br>        fileBlock.setMd5(md5);<br>        fileBlock.setChunk(chunk);<br>        fileBlock.setChunkSize(file.getSize());<br>        fileBlock.setPath(uploadPath);<br>        fileBlock.setName(<span class="hljs-string">&quot;###&quot;</span> + chunk + <span class="hljs-string">&quot;###&quot;</span> + name);<br>        fileBlock.setCreated(<span class="hljs-keyword">new</span> <span class="hljs-title class_">Date</span>());<br><br>        fileBlockService.save(fileBlock);<br><br>        <span class="hljs-keyword">return</span> Response.ok();<br>    &#125;<br><br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@author</span>:xjc</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@date</span>:2018/11/20</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@description</span>:检查片段是否已经上传</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@params</span>:</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-meta">@GetMapping(&quot;check&quot;)</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-type">boolean</span> <span class="hljs-title function_">check</span><span class="hljs-params">(<span class="hljs-meta">@RequestParam(value = &quot;md5&quot;)</span> String md5,</span><br><span class="hljs-params">                         <span class="hljs-meta">@RequestParam(value = &quot;chunk&quot;)</span> String chunk</span><br><span class="hljs-params">                         )</span>&#123;<br><br>        <span class="hljs-type">FileBlock</span> <span class="hljs-variable">fileBlock</span> <span class="hljs-operator">=</span> fileBlockService.findByMd5AndChunk(md5, chunk);<br>        <span class="hljs-keyword">if</span>(fileBlock==<span class="hljs-literal">null</span>)<br>            <span class="hljs-keyword">synchronized</span> (FileBlock.class) &#123;<br>                <span class="hljs-keyword">if</span>(fileBlockService.findByMd5AndChunk(md5, chunk)==<span class="hljs-literal">null</span>)<br>                    <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>            &#125;<br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>    &#125;<br><br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@author</span>:xjc</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@date</span>:2018/11/20</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@description</span>:合并片段</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@params</span>:</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-meta">@PostMapping(&quot;merge&quot;)</span><br>    <span class="hljs-keyword">public</span> Response <span class="hljs-title function_">merge</span><span class="hljs-params">(<span class="hljs-meta">@RequestParam(value = &quot;md5&quot;)</span> String md5)</span>&#123;<br><br><span class="hljs-comment">//        查询所有md5片段集合(该集合是无顺序的),转换顺序</span><br>        List&lt;FileBlock&gt; list = fileBlockService.findByMd5(md5);<br><br>        String[] paths=<span class="hljs-keyword">new</span> <span class="hljs-title class_">String</span>[list.size()];<br><br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>;i&lt;list.size();i++)&#123;<br>            FileBlock fileBlock=list.get(i);<br><br>            <span class="hljs-type">String</span> <span class="hljs-variable">path</span> <span class="hljs-operator">=</span> fileBlock.getPath();<br>            <span class="hljs-type">Integer</span> <span class="hljs-variable">chunk</span> <span class="hljs-operator">=</span> Integer.parseInt(fileBlock.getChunk());<br>            paths[chunk]=path;<br>        &#125;<br><br><span class="hljs-comment">//        final String[] path, final String finalSavePath</span><br>        <span class="hljs-keyword">if</span>(list.size()==<span class="hljs-number">0</span>)<br>            <span class="hljs-keyword">return</span> Response.error();<br>        FileBlock fileBlock=list.get(<span class="hljs-number">0</span>);<br>        <span class="hljs-type">String</span> <span class="hljs-variable">path</span> <span class="hljs-operator">=</span> fileBlock.getPath();<br>        String[] split = path.split(<span class="hljs-string">&quot;###&quot;</span>);<br>        String name=split[<span class="hljs-number">2</span>];<br>        String savePath=basePath+<span class="hljs-string">&quot;\\&quot;</span>+name;<br><br>        <span class="hljs-keyword">try</span> &#123;<br>            FileUtils.mergeFile(paths,savePath);<br>        &#125; <span class="hljs-keyword">catch</span> (Exception e) &#123;<br>            e.printStackTrace();<br>            <span class="hljs-keyword">return</span> Response.error();<br>        &#125;<br><br>        <span class="hljs-keyword">return</span> Response.ok();<br><br>    &#125;<br><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>FileEntityService 与 FileBlockService</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@author</span>: xjc</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@date</span> 2018/11/20 15:33</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@description</span></span><br><span class="hljs-comment"> **/</span><br><span class="hljs-meta">@Service</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">FileEntityService</span> &#123;<br><br>    <span class="hljs-meta">@Autowired</span><br>    FileEntityRepository fileEntityRepository;<br><br>    <span class="hljs-keyword">public</span> Response <span class="hljs-title function_">findById</span><span class="hljs-params">(String md5)</span>&#123;<br>        <span class="hljs-keyword">if</span>(md5==<span class="hljs-literal">null</span>||<span class="hljs-string">&quot;&quot;</span>.equals(md5))<br>            <span class="hljs-keyword">return</span> Response.error(<span class="hljs-string">&quot;null&quot;</span>);<br><br>        <span class="hljs-type">FileEntity</span> <span class="hljs-variable">fileEntity</span> <span class="hljs-operator">=</span> <span class="hljs-literal">null</span>;<br>        <span class="hljs-keyword">try</span> &#123;<br><span class="hljs-comment">//        没找到会报错</span><br>            fileEntity = fileEntityRepository.findById(md5).get();<br>             <span class="hljs-keyword">return</span> Response.ok(<span class="hljs-string">&quot;OK&quot;</span>,fileEntity);<br>        &#125; <span class="hljs-keyword">catch</span> (Exception e) &#123;<br>            System.out.println(FileEntityService.class+<span class="hljs-string">&quot;找不到ID:::&quot;</span>+md5);<br>            <span class="hljs-keyword">return</span> Response.error(<span class="hljs-string">&quot;null&quot;</span>);<br>        &#125;<br>    &#125;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">upload</span><span class="hljs-params">(MultipartFile file, String chunk, String name,String uploadPath)</span> &#123;<br>        <span class="hljs-keyword">try</span> &#123;<br><span class="hljs-comment">//            上传片段</span><br>            FileUtils.uploaded(file,uploadPath);<br><span class="hljs-comment">//            成功存储数据到数据库</span><br>            <span class="hljs-type">FileBlock</span> <span class="hljs-variable">fileBlock</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">FileBlock</span>();<br><br>        &#125; <span class="hljs-keyword">catch</span> (Exception e) &#123;<br>            e.printStackTrace();<br>        &#125;<br><br>    &#125;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">save</span><span class="hljs-params">(FileEntity fileEntity)</span>&#123;<br><br>        fileEntityRepository.save(fileEntity);<br><br>    &#125;<br><br>&#125;<br><br><span class="hljs-keyword">package</span> com.example.serivce;<br><br><span class="hljs-keyword">import</span> com.example.entity.FileBlock;<br><span class="hljs-keyword">import</span> com.example.repository.FileBlockRepository;<br><span class="hljs-keyword">import</span> org.springframework.beans.factory.annotation.Autowired;<br><span class="hljs-keyword">import</span> org.springframework.stereotype.Service;<br><span class="hljs-keyword">import</span> java.util.List;<br><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@author</span>: xjc</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@date</span> 2018/11/20 20:40</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@description</span></span><br><span class="hljs-comment"> **/</span><br><span class="hljs-meta">@Service</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">FileBlockService</span> &#123;<br><br>    <span class="hljs-meta">@Autowired</span><br>    <span class="hljs-keyword">protected</span> FileBlockRepository repository;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">save</span><span class="hljs-params">(FileBlock fileBlock)</span>&#123;<br><br>        repository.save(fileBlock);<br><br>    &#125;<br><br>    <span class="hljs-keyword">public</span> List&lt;FileBlock&gt; <span class="hljs-title function_">findByMd5</span><span class="hljs-params">(String md5)</span>&#123;<br><br>        <span class="hljs-keyword">return</span> repository.findByMd5(md5);<br>    &#125;<br><br>    <span class="hljs-keyword">public</span> FileBlock <span class="hljs-title function_">findByMd5AndChunk</span><span class="hljs-params">(String md5,String chunk)</span>&#123;<br><br>        <span class="hljs-keyword">return</span>  repository.findByMd5AndChunk(md5,chunk);<br>    &#125;<br><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>FileUtils(文件读写与合并)</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">package</span> com.example.common;<br><br><span class="hljs-keyword">import</span> org.springframework.web.multipart.MultipartFile;<br><br><span class="hljs-keyword">import</span> java.io.*;<br><span class="hljs-keyword">import</span> java.nio.channels.FileChannel;<br><span class="hljs-keyword">import</span> java.nio.channels.WritableByteChannel;<br><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@author</span>: xjc</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@date</span> 2018/11/20 19:01</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@description</span></span><br><span class="hljs-comment"> **/</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">FileUtils</span> &#123;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">uploaded</span><span class="hljs-params">( MultipartFile file,</span><br><span class="hljs-params">//                                        <span class="hljs-keyword">final</span> String md5,</span><br><span class="hljs-params">//                                       <span class="hljs-keyword">final</span> String guid,</span><br><span class="hljs-params">//                                       <span class="hljs-keyword">final</span> String chunk,</span><br><span class="hljs-params">                                       <span class="hljs-keyword">final</span> String uploadFolderPath</span><br><span class="hljs-params">//                                       <span class="hljs-keyword">final</span> String fileName,</span><br><span class="hljs-params">//                                       <span class="hljs-keyword">final</span> String ext,</span><br><span class="hljs-params">//                                       <span class="hljs-keyword">final</span> String filePath)</span><br>    )<span class="hljs-keyword">throws</span> Exception &#123;<br>        <span class="hljs-type">File</span> <span class="hljs-variable">uploadFile</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">File</span>(uploadFolderPath);<br>        <span class="hljs-keyword">if</span>(uploadFile.exists())&#123;<br>            uploadFile.delete();<br>        &#125;<br>        <span class="hljs-type">byte</span>[] data = readInputStream(file.getInputStream());<br><br>        <span class="hljs-keyword">try</span> (<span class="hljs-type">FileOutputStream</span> <span class="hljs-variable">outStream</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">FileOutputStream</span>(uploadFile)) &#123;<span class="hljs-comment">//写入数据</span><br>            outStream.write(data);<br>            outStream.flush();<br><br>        &#125; <span class="hljs-keyword">catch</span> (Exception e) &#123;<br>            e.printStackTrace();<br>            <span class="hljs-keyword">throw</span> e;<br>        &#125;<br>    &#125;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-type">byte</span>[] readInputStream(InputStream inStream) <span class="hljs-keyword">throws</span> Exception &#123;<br>        <span class="hljs-type">ByteArrayOutputStream</span> <span class="hljs-variable">outStream</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">ByteArrayOutputStream</span>();<br>        <span class="hljs-comment">//创建一个Buffer字符串</span><br>        <span class="hljs-type">byte</span>[] buffer = <span class="hljs-keyword">new</span> <span class="hljs-title class_">byte</span>[<span class="hljs-number">1024</span>];<br>        <span class="hljs-comment">//每次读取的字符串长度，如果为-1，代表全部读取完毕</span><br>        <span class="hljs-type">int</span> len;<br>        <span class="hljs-comment">//使用一个输入流从buffer里把数据读取出来</span><br>        <span class="hljs-keyword">while</span> ((len = inStream.read(buffer)) != -<span class="hljs-number">1</span>) &#123;<br>            <span class="hljs-comment">//用输出流往buffer里写入数据，中间参数代表从哪个位置开始读，len代表读取的长度</span><br>            outStream.write(buffer, <span class="hljs-number">0</span>, len);<br>        &#125;<br>        <span class="hljs-comment">//关闭输入流</span><br>        inStream.close();<br>        <span class="hljs-comment">//把outStream里的数据写入内存</span><br>        <span class="hljs-keyword">return</span> outStream.toByteArray();<br>    &#125;<br><br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@author</span>:xjc</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@date</span>:2018/11/20</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@description</span>:合并文件</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@params</span>:</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">mergeFile</span><span class="hljs-params">(<span class="hljs-keyword">final</span> String[] paths, <span class="hljs-keyword">final</span> String finalSavePath)</span><br>            <span class="hljs-keyword">throws</span> Exception &#123;<br>        <span class="hljs-keyword">if</span>(paths.length==<span class="hljs-number">1</span>)&#123;<br><span class="hljs-comment">//            不需要合并</span><br>            InputStream is= <span class="hljs-keyword">new</span> <span class="hljs-title class_">FileInputStream</span>(paths[<span class="hljs-number">0</span>]);<br>            saveStreamToFile(is,finalSavePath);<br>            <span class="hljs-keyword">return</span> ;<br>        &#125;<br><span class="hljs-comment">//        SequenceInputStream s ;</span><br><span class="hljs-comment">////        InputStream s1 = new FileInputStream(list.get(0).getPath());</span><br><span class="hljs-comment">////        InputStream s2 = new FileInputStream(list.get(1).getPath());</span><br><span class="hljs-comment">////        s = new SequenceInputStream(s1, s2);</span><br><span class="hljs-comment">////        for (int i=2;i&lt;list.size();i++) &#123;</span><br><span class="hljs-comment">////            InputStream s3 = new FileInputStream(list.get(i).getPath());</span><br><span class="hljs-comment">////            s = new SequenceInputStream(s, s3);</span><br><span class="hljs-comment">////        &#125;</span><br><span class="hljs-comment">////</span><br><span class="hljs-comment">////        //通过输出流向文件写入数据</span><br><span class="hljs-comment">////        saveStreamToFile(s, finalSavePath);</span><br><br>        <span class="hljs-type">FileOutputStream</span> <span class="hljs-variable">output</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">FileOutputStream</span>(<span class="hljs-keyword">new</span> <span class="hljs-title class_">File</span>(finalSavePath));<br>        <span class="hljs-type">WritableByteChannel</span> <span class="hljs-variable">targetChannel</span> <span class="hljs-operator">=</span> output.getChannel();<br><br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span><span class="hljs-number">0</span>; i&lt;paths.length; i++)&#123;<br>            <span class="hljs-type">FileInputStream</span> <span class="hljs-variable">input</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">FileInputStream</span>(paths[i]);<br>            <span class="hljs-type">FileChannel</span> <span class="hljs-variable">inputChannel</span> <span class="hljs-operator">=</span> input.getChannel();<br><br>            inputChannel.transferTo(<span class="hljs-number">0</span>, inputChannel.size(), targetChannel);<br><br>            inputChannel.close();<br>            input.close();<br>        &#125;<br>        targetChannel.close();<br>        output.close();<br><br>    &#125;<br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * 从stream中保存文件</span><br><span class="hljs-comment">     *</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@param</span> inputStream inputStream</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@param</span> filePath    保存路径</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@throws</span> Exception 异常 抛异常代表失败了</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">saveStreamToFile</span><span class="hljs-params">( <span class="hljs-keyword">final</span> InputStream inputStream,</span><br><span class="hljs-params">                                         <span class="hljs-keyword">final</span> String filePath)</span><br>            <span class="hljs-keyword">throws</span> Exception &#123;<br>        <span class="hljs-comment">/*创建输出流，写入数据，合并分块*/</span><br>        <span class="hljs-type">OutputStream</span> <span class="hljs-variable">outputStream</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">FileOutputStream</span>(filePath);<br>        <span class="hljs-type">byte</span>[] buffer = <span class="hljs-keyword">new</span> <span class="hljs-title class_">byte</span>[<span class="hljs-number">1024</span>];<br>        <span class="hljs-type">int</span> <span class="hljs-variable">len</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">try</span> &#123;<br>            <span class="hljs-keyword">while</span> ((len = inputStream.read(buffer)) != -<span class="hljs-number">1</span>) &#123;<br>                outputStream.write(buffer, <span class="hljs-number">0</span>, len);<br>                outputStream.flush();<br>            &#125;<br>        &#125; <span class="hljs-keyword">catch</span> (Exception e) &#123;<br>            e.printStackTrace();<br>            <span class="hljs-keyword">throw</span> e;<br>        &#125; <span class="hljs-keyword">finally</span> &#123;<br>            outputStream.close();<br>            inputStream.close();<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure></li>
+</ul>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E7%BC%96%E7%A8%8B/" class="category-chain-item">编程</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/Java/" class="print-no-link">#Java</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>webupload+springboot实现文件上传</div>
+      <div>https://blog.restart.vip/posts/26505/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>xjc</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2018年11月21日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/posts/59296/" title="使用Spring-Socail开发第三方认证">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">使用Spring-Socail开发第三方认证</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/posts/21826/" title="springboot自动注入出现define报错">
+                        <span class="hidden-mobile">springboot自动注入出现define报错</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://lib.baomitu.com/valine/1.5.1/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"gKtB30tLihTNa04qYcThi76Z-gzGzoHsz","appKey":"avBcj7X67Rr2jPyeUhEkgpak","path":"window.location.pathname","placeholder":"留下你的足迹吧","avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":true,"recordIP":true,"serverURLs":"","emojiCDN":"//i0.hdslb.com/bfs/emote/","emojiMaps":{"tv_doge":"6ea59c827c414b4a2955fe79e0f6fd3dcd515e24.png","tv_亲亲":"a8111ad55953ef5e3be3327ef94eb4a39d535d06.png","tv_偷笑":"bb690d4107620f1c15cff29509db529a73aee261.png","tv_再见":"180129b8ea851044ce71caf55cc8ce44bd4a4fc8.png","tv_冷漠":"b9cbc755c2b3ee43be07ca13de84e5b699a3f101.png","tv_发怒":"34ba3cd204d5b05fec70ce08fa9fa0dd612409ff.png","tv_发财":"34db290afd2963723c6eb3c4560667db7253a21a.png","tv_可爱":"9e55fd9b500ac4b96613539f1ce2f9499e314ed9.png","tv_吐血":"09dd16a7aa59b77baa1155d47484409624470c77.png","tv_呆":"fe1179ebaa191569b0d31cecafe7a2cd1c951c9d.png","tv_呕吐":"9f996894a39e282ccf5e66856af49483f81870f3.png","tv_困":"241ee304e44c0af029adceb294399391e4737ef2.png","tv_坏笑":"1f0b87f731a671079842116e0991c91c2c88645a.png","tv_大佬":"093c1e2c490161aca397afc45573c877cdead616.png","tv_大哭":"23269aeb35f99daee28dda129676f6e9ea87934f.png","tv_委屈":"d04dba7b5465779e9755d2ab6f0a897b9b33bb77.png","tv_害羞":"a37683fb5642fa3ddfc7f4e5525fd13e42a2bdb1.png","tv_尴尬":"7cfa62dafc59798a3d3fb262d421eeeff166cfa4.png","tv_微笑":"70dc5c7b56f93eb61bddba11e28fb1d18fddcd4c.png","tv_思考":"90cf159733e558137ed20aa04d09964436f618a1.png","tv_惊吓":"0d15c7e2ee58e935adc6a7193ee042388adc22af.png"},"enableQQ":true},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          var imgSelector = '#valine .vcontent img:not(.vemoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <p id="hitokoto">:D 获取中...</p> <div> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> | <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a><i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <script src="/js/time.js"></script> </div> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="leancloud-site-pv-container" style="display: none">
+        总访问量 
+        <span id="leancloud-site-pv"></span>
+         次
+      </span>
+    
+    
+      <span id="leancloud-site-uv-container" style="display: none">
+        总访客数 
+        <span id="leancloud-site-uv"></span>
+         人
+      </span>
+    
+    
+
+  
+
+</div>
+
+  
+  
+    <!-- 备案信息 ICP for China -->
+    <div class="beian">
+  <span>
+    <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+      京ICP证123456号
+    </a>
+  </span>
+  
+    
+      <span>
+        <a
+          href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=32432235"
+          rel="nofollow noopener"
+          class="beian-police"
+          target="_blank"
+        >
+          
+            <span style="visibility: hidden; width: 0">|</span>
+            <img src="/img/police_beian.png" srcset="/img/loading.gif" lazyload alt="police-icon"/>
+          
+          <span>京公网安备32432235号</span>
+        </a>
+      </span>
+    
+  
+</div>
+
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script defer src="/js/leancloud.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+  
+<script src="//cdn.jsdelivr.net/gh/EmoryHuang/BlogBeautify@1.1/love.min.js"></script>
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>
